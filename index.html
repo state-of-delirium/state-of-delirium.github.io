@@ -3,8 +3,9 @@ layout: default
 title: "Home"
 ---
 
+
 <div class="about">
-    <h1>Some random heading</h1>
+    <h1><span class="dotted-underline">Some random heading</span></h1>
     <br>
     <p>
     Delirium is a specific state of acute confusion attributable to the direct physiological consequence of a medical condition, effects of a psychoactive substance, or multiple causes, which usually develops over the course of hours to days.
@@ -14,13 +15,13 @@ title: "Home"
 </div>
 
 <div class="recentPosts">
-    <h2>Recent Posts</h2>
+    <h2><i><span class="accent-2">Recent Posts</span></i></h2>
     <ul>
     {% for post in site.posts limit: 3 %}
         <a href="{{ post.url }}">
             <li>
             <h2>{{ post.title }}</h2>
-            {{ post.excerpt }}
+            <p>{{ post.excerpt }}</p>
             </li>
         </a>
     {% endfor %}

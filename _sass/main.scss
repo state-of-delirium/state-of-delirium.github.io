@@ -4,8 +4,12 @@ $acc-color-2: #a06390;
 $page-color: #EFE9E3;
 
 $title-font: "Merriweather";
+$title-color: #3b342e;
 $para-font: "WorkSans";
 $para-font-italic: "WorkSans-Italic";
+$para-color: #121111;
+
+
 
 @font-face {
     font-family: $title-font;
@@ -22,16 +26,13 @@ $para-font-italic: "WorkSans-Italic";
     src: url("assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
 }
 
+
 .currentNav {
-    color: $acc-color-1 !important;
+    color: $acc-color-2 !important;
 }
 
 .content {
     margin: 0 20vw;
-    background-color: $page-color;
-    h1 {
-        text-align: center;
-    }
 }
 
 body, html {
@@ -46,7 +47,6 @@ body, html {
 nav {
     display: flex;
     align-items: center;
-    background-color: $page-color;
     gap: 3rem;
     padding: 1rem 5rem 3rem;
     height: 2rem;
@@ -60,6 +60,8 @@ nav {
         display: inline-block;
         justify-self: flex-end;
         font-weight: bold;
+        font-size: 1.1rem;
+        font-family: $title-font;
     }
 }
 
@@ -69,18 +71,44 @@ nav {
 
 h1 {
     font-size: 2.3rem;
+    text-align: center;
 }
 h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    
 }
 h1, h2 {
     font-family: $title-font;
     font-weight: 200;
+    color: $title-color;
 }
+
+.dotted-underline, .underline {
+    display: inline-table;
+}
+
+.dotted-underline:after, .underline:after {
+    content: "";
+    display: table-caption;
+    caption-side: bottom;
+    position: relative;
+    margin-top:-0.15em;
+
+}
+
+.dotted-underline:after {
+    border-bottom: 0.1em dotted $acc-color-1;
+}
+
+.underline:after {
+    border-bottom: 0.1em solid $acc-color-2;
+}
+
 p {
-    line-height: 1.3rem;
+    line-height: 1.6rem;
     font-family: $para-font;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: $para-color;
 
     i {
         font-family: $para-font-italic;
@@ -93,7 +121,11 @@ a, a:link, a:visited, a:active {
 }
 
 a:hover {
-    color: $acc-color-1;
+    color: $acc-color-2;
+}
+
+.accent-2 {
+    color: $acc-color-2;
 }
 
 ul {
@@ -116,11 +148,16 @@ ul {
             padding: 0;
             margin: 0 0 1rem;
         }
+
+        p {
+            font-size: 0.9rem;
+        }
     }
 
     a:hover {
-        outline: 2px solid $acc-color-2;
         color: inherit;
+        background: transparent;
+        box-shadow: -1px -1px 5px $acc-color-2, 4px 4px 5px $acc-color-1;
     }
 }
 
