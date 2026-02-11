@@ -9,7 +9,7 @@
 
   <body>
     <nav>
-      <div class="logoText"><a href="/">STATE OF DELIRIUM</a></div>
+      <div class="logoText"><a href="/"><img src="assets/images/logo-text.png" alt="STATE OF DELIRIUM"></a></div>
       {% for item in site.data.navigation %}
         <a href="{{ item.link }}" {% if page.url == item.link %}class="currentNav"{% endif %}>
             {{ item.name }}

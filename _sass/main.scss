@@ -3,17 +3,23 @@ $acc-color-1: #65928b;
 $acc-color-2: #a06390;
 $page-color: #EFE9E3;
 
-$font-1: "Cinzel";
-$font-3: "Merriweather";
+$title-font: "Merriweather";
+$para-font: "WorkSans";
+$para-font-italic: "WorkSans-Italic";
 
 @font-face {
-    font-family: $font-1;
-    src: url("/assets/fonts/CinzelDecorative-Bold.ttf");
+    font-family: $title-font;
+    src: url("/assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
 }
 
 @font-face {
-    font-family: $font-3;
-    src: url("/assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
+    font-family: $para-font;
+    src: url("/assets/fonts/WorkSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: $para-font-italic;
+    src: url("assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
 }
 
 .currentNav {
@@ -46,11 +52,8 @@ nav {
     height: 2rem;
     .logoText {
         flex-grow: 2;
-        a {
-            font-weight: 700;
-            color: $acc-color-2;
-            font-family: $font-1;
-            font-size: 1.3rem;
+        a > img {
+            height: 3rem;
         }
     }
     a {
@@ -71,12 +74,17 @@ h2 {
     font-size: 1.3rem;
 }
 h1, h2 {
-    font-family: $font-3;
+    font-family: $title-font;
     font-weight: 200;
 }
 p {
     line-height: 1.3rem;
+    font-family: $para-font;
     font-size: 1.1rem;
+
+    i {
+        font-family: $para-font-italic;
+    }
 }
 
 a, a:link, a:visited, a:active {
