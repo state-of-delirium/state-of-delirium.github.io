@@ -1,4 +1,123 @@
+$prim-color: #e4dddd;
+$acc-color-1: #65928b;
+$acc-color-2: #a06390;
+$page-color: #EFE9E3;
+
+$font-1: "Cinzel";
+$font-3: "Merriweather";
+
+@font-face {
+    font-family: $font-1;
+    src: url("/assets/fonts/CinzelDecorative-Bold.ttf");
+}
+
+@font-face {
+    font-family: $font-3;
+    src: url("/assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
+}
+
 .currentNav {
-    color: lightseagreen;
-    font-weight: bold
+    color: $acc-color-1 !important;
+}
+
+.content {
+    margin: 0 20vw;
+    background-color: $page-color;
+    h1 {
+        text-align: center;
+    }
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: $page-color;
+    min-width: 1000px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    background-color: $page-color;
+    gap: 3rem;
+    padding: 1rem 5rem 3rem;
+    height: 2rem;
+    .logoText {
+        flex-grow: 2;
+        a {
+            font-weight: 700;
+            color: $acc-color-2;
+            font-family: $font-1;
+            font-size: 1.3rem;
+        }
+    }
+    a {
+        display: inline-block;
+        justify-self: flex-end;
+        font-weight: bold;
+    }
+}
+
+.about {
+    margin: 0 0 10rem;
+}
+
+h1 {
+    font-size: 2.3rem;
+}
+h2 {
+    font-size: 1.3rem;
+}
+h1, h2 {
+    font-family: $font-3;
+    font-weight: 200;
+}
+p {
+    line-height: 1.3rem;
+    font-size: 1.1rem;
+}
+
+a, a:link, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $acc-color-1;
+}
+
+ul {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+
+    list-style: none;
+    margin: 0;
+    a {
+        padding: 1rem;
+        background-color: $prim-color;
+        border-radius: 1rem;
+        min-height: 10rem;
+        overflow: hidden;
+        flex: 1 1 20ch;
+
+        h2 {
+            padding: 0;
+            margin: 0 0 1rem;
+        }
+    }
+
+    a:hover {
+        outline: 2px solid $acc-color-2;
+        color: inherit;
+    }
+}
+
+@media (max-width: 1200px) {
+    ul {
+        flex-direction: column;
+    }
 }

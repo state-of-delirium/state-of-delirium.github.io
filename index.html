@@ -3,4 +3,26 @@ layout: default
 title: "Home"
 ---
 
-<h1>{{ "Hello World!" | downcase }}</h1>
+<div class="about">
+    <h1>Some random heading</h1>
+    <br>
+    <p>
+    Delirium is a specific state of acute confusion attributable to the direct physiological consequence of a medical condition, effects of a psychoactive substance, or multiple causes, which usually develops over the course of hours to days.
+    As a syndrome, delirium presents with disturbances in attention, awareness, and higher-order cognition.
+    People with delirium may experience other neuropsychiatric disturbances including changes in psychomotor activity, disrupted sleep-wake cycle, emotional disturbances, disturbances of consciousness, or altered state of consciousness, as well as perceptual disturbances, although these features are not required for diagnosis
+    </p>
+</div>
+
+<div class="recentPosts">
+    <h2>Recent Posts</h2>
+    <ul>
+    {% for post in site.posts limit: 3 %}
+        <a href="{{ post.url }}">
+            <li>
+            <h2>{{ post.title }}</h2>
+            {{ post.excerpt }}
+            </li>
+        </a>
+    {% endfor %}
+    </ul>
+</div>
