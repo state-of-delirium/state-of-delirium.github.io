@@ -16,7 +16,7 @@ title: "Home"
 
 <div class="recentPosts">
     <h2><i><span class="accent-2">Recent Posts</span></i></h2>
-    <ul>
+    <ul class="grid-list">
     {% for post in site.posts limit: 3 %}
         <a href="{{ post.url }}">
             <li>

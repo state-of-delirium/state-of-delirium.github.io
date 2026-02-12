@@ -2,6 +2,7 @@ $prim-color: #e4dddd;
 $acc-color-1: #65928b;
 $acc-color-2: #a06390;
 $page-color: #EFE9E3;
+$edge-color: #c2a385;
 
 $title-font: "Merriweather";
 $title-color: #3b342e;
@@ -9,21 +10,22 @@ $para-font: "WorkSans";
 $para-font-italic: "WorkSans-Italic";
 $para-color: #121111;
 
+$card-radius: 1rem;
 
 
 @font-face {
     font-family: $title-font;
-    src: url("/assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
+    src: url("../../assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
 }
 
 @font-face {
     font-family: $para-font;
-    src: url("/assets/fonts/WorkSans-VariableFont_wght.ttf");
+    src: url("../../assets/fonts/WorkSans-VariableFont_wght.ttf");
 }
 
 @font-face {
     font-family: $para-font-italic;
-    src: url("assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
+    src: url("../../assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
 }
 
 
@@ -38,27 +40,61 @@ $para-color: #121111;
 body, html {
     padding: 0;
     margin: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: $page-color;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
     min-width: 1000px;
+}
+
+.dither-bg {
+    background-color: $page-color;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index:-1;
+}
+
+.dither-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: radial-gradient($edge-color 50%, transparent 50%);
+    background-size: 0.35rem 0.35rem;
+
+    -webkit-mask-image: linear-gradient(
+        to right, 
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0) 10%,
+        rgba(0,0,0,0) 90%,
+        rgba(0,0,0,1) 100%
+    );
+    mask-image: linear-gradient(
+        to right, 
+        black 0%,
+        transparent 10% 90%,
+        black 100%
+    );
+
+    opacity: 0.2;
 }
 
 nav {
     display: flex;
     align-items: center;
     gap: 3rem;
-    padding: 1rem 5rem 3rem;
+    padding: 2rem 5rem 3rem;
     height: 2rem;
-    .logoText {
-        flex-grow: 2;
-        a > img {
-            height: 3rem;
+    .logo {
+        flex: 1;
+        font-family: $title-font;
+        img {
+            width: 8rem;
+            height: auto;
         }
     }
     a {
-        display: inline-block;
-        justify-self: flex-end;
         font-weight: bold;
         font-size: 1.1rem;
         font-family: $title-font;
@@ -131,18 +167,18 @@ a:hover {
 ul {
     padding: 0;
     display: flex;
-    flex-direction: row;
     gap: 1.5rem;
 
     list-style: none;
     margin: 0;
     a {
+        display: flex;
         padding: 1rem;
         background-color: $prim-color;
-        border-radius: 1rem;
+        border-radius: $card-radius;
         min-height: 10rem;
         overflow: hidden;
-        flex: 1 1 20ch;
+        flex: 1;
 
         h2 {
             padding: 0;
@@ -161,8 +197,44 @@ ul {
     }
 }
 
+ul.vertical-list {
+    flex-direction: column;
+}
+
+ul.grid-list {
+    flex-direction: row;
+}
+
 @media (max-width: 1200px) {
     ul {
-        flex-direction: column;
+        flex-direction: column !important;
     }
+}
+
+
+.post-card {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    height: clamp(15rem, 25vh, 25rem);
+
+    .post-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        p {
+            flex: 1;
+        }
+    }
+
+    img {
+        border-radius: 0  $card-radius $card-radius 0;
+    }
+}
+
+.post-wrapper {
+    margin-inline: 8vw;
+    min-width: 600px;
 }

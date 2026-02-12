@@ -3,14 +3,22 @@ layout: default
 title: Blog
 permalink: /blog/
 ---
-<h1>Latest Posts</h1>
+<h1><span class="dotted-underline">Posts</span></h1>
+<br><br>
 
-<ul>
+<ul class="vertical-list">
   {% for post in site.posts %}
-    <a href="{{ post.url }}">
-      <li>
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.excerpt }}</p>
+    <a href="{{ post.url }}" class="post-wrapper">
+      <li class="post-card">
+      
+        <div class="post-text">
+          <h2><span class="underline">{{ post.title }}</span></h2>
+          <p>{{ post.excerpt }}</p>
+          <i>{{ post.date | date_to_string }}</i>
+          
+        </div>
+        <img src="{{ post.thumb }}">
+
       </li>
     </a>
   {% endfor %}

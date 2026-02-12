@@ -8,8 +8,9 @@
 
 
   <body>
+    <div class="dither-bg"></div>
     <nav>
-      <div class="logoText"><a href="/"><img src="assets/images/logo-text.png" alt="STATE OF DELIRIUM"></a></div>
+      <a href="/" class="logo"><img src="{{site.baseurl}}/assets/images/state-of-delirium.svg" alt="STATE OF DELIRIUM"></a>
       {% for item in site.data.navigation %}
         <a href="{{ item.link }}" {% if page.url == item.link %}class="currentNav"{% endif %}>
             {{ item.name }}
