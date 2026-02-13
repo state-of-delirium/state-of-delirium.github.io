@@ -12,3 +12,14 @@ defaults:
 collections:
   authors:
     output: true
+
+url: "{{site.baseurl}}"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+
+feed:
+  icon: "assets/images/favicon.svg"
+  logo: "assets/images/favicon.svg"

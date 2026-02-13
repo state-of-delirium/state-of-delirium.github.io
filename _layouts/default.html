@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{site.title}} - {{ page.title }}</title>
+    <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/x-icon">   
   </head>
 
 
@@ -16,11 +17,19 @@
             {{ item.name }}
         </a>
       {% endfor %}
+      <a href="/feed.xml" class="rss">
+          <img src="{{site.baseurl}}/assets/images/rss.svg" alt="RSS" class="rss-static">
+          <img src="{{site.baseurl}}/assets/images/rss-hover.svg" alt="RSS" class="rss-hover">
+      </a>
     </nav>
     
     <div class="content">
       {{ content }}
     </div>
+
+    {% if page.show_footer %}
+      {% include footer.html %}
+    {% endif %}
     
   </body>
 
