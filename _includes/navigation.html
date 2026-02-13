@@ -1,0 +1,12 @@
+<nav>
+    <a href="/" class="logo"><img src="{{site.baseurl}}/assets/images/state-of-delirium.svg" alt="STATE OF DELIRIUM"></a>
+    {% for item in site.data.navigation %}
+    <a href="{{ item.link }}" {% if page.url == item.link %}class="currentNav"{% endif %}>
+        {{ item.name }}
+    </a>
+    {% endfor %}
+    <a href="/feed.xml" class="rss">
+        <img src="{{site.baseurl}}/assets/images/rss.svg" alt="RSS" class="rss-static">
+        <img src="{{site.baseurl}}/assets/images/rss-hover.svg" alt="RSS" class="rss-hover">
+    </a>
+</nav>
