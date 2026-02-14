@@ -3,8 +3,24 @@ layout: default
 ---
 
 <h1><span class="dotted-underline-2">{{ page.title }}</span></h1>
-<p><i>{{ page.date | date_to_string }} - {{ page.author }}</i></p>
 
-{{ content }}
+<div class="blog-post-info">
+    <p><i>{{ page.date | date_to_string }} - {{ page.author }}</i></p>
+    {% if page.confidence %}
+        {% include confidence.html %}
+    {% endif %}
+    <p class="reading-time"></p>
+</div>
+
+<br>
+
+<div class="blog-post-content">
+    {{ content }}
+</div>
+
 
 {% include fleuron.html %}
+
+<script>
+    {% include reading_time.js %}
+</script>

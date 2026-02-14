@@ -18,8 +18,12 @@ url: "{{site.baseurl}}"
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-target-blank
 
 
 feed:
   icon: "assets/images/favicon.svg"
   logo: "assets/images/favicon.svg"
+
+target-blank:
+  rel: external

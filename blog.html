@@ -14,8 +14,8 @@ show_footer: true
       
         <div class="post-text">
           <h2><span class="underline">{{ post.title }}</span></h2>
-          <p>{{ post.excerpt }}</p>
-          <i>{{ post.date | date_to_string }}</i>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
+          <p><i>{{ post.date | date_to_string }}</i></p>
           
         </div>
         <img src="{{ post.thumb }}">

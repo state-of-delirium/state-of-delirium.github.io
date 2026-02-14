@@ -5,9 +5,10 @@ $page-color: #EFE9E3;
 $edge-color: #c2a385;
 
 $title-font: "Merriweather";
-$italic-font: "Merriweather-Italic";
+$title-italic-font: "Merriweather-Italic";
 $title-color: #3b342e;
 $para-font: "WorkSans";
+$para-italic-font: "WorkSans-Italic";
 $para-color: #121111;
 
 $card-radius: 1rem;
@@ -19,7 +20,7 @@ $card-radius: 1rem;
 }
 
 @font-face {
-    font-family: $italic-font;
+    font-family: $title-italic-font;
     src: url("../../assets/fonts/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf");
 }
 
@@ -28,6 +29,10 @@ $card-radius: 1rem;
     src: url("../../assets/fonts/WorkSans-VariableFont_wght.ttf");
 }
 
+@font-face {
+    font-family: $para-italic-font;
+    src: url("../../assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
+}
 
 
 .currentNav {
@@ -56,7 +61,6 @@ body, html, a {
     width: 100%;
     overflow: hidden;
     z-index:-1;
-    
 }
 
 .dither-bg::before {
@@ -82,17 +86,6 @@ body, html, a {
     );
 
     opacity: 0.25;
-
-    //animation: pan 40s linear infinite;
-}
-
-@keyframes pan {
-    from {
-        background-position: 0% 0%;
-    }
-    to {
-        background-position: 0% 100%;
-    }
 }
 
 nav {
@@ -128,6 +121,15 @@ nav {
     }
 }
 
+nav {
+    a, a:link, a:visited, a:active {
+        color: $title-color;
+    }
+    a:hover {
+        color: $acc-color-2;
+    }
+}
+
 .about, .recentPosts, .buttons-wrapper {
     margin: 0 0 10rem;
 }
@@ -137,13 +139,15 @@ h1 {
     text-align: center;
 }
 h2 {
-    font-size: 1.2rem;
-    
+    font-size: 1.2rem;  
 }
 h1, h2 {
     font-family: $title-font;
     font-weight: 200;
     color: $title-color;
+    i {
+        font-family: $title-italic-font;
+    }
 }
 
 .dotted-underline-1, .dotted-underline-2, .underline {
@@ -159,37 +163,36 @@ h1, h2 {
 
 }
 
-.dotted-underline-1:after {
-    border-bottom: 0.1em dotted $acc-color-1;
-}
-
-.dotted-underline-2:after {
-    border-bottom: 0.1em dotted $acc-color-2;
-}
-
-.underline:after {
-    border-bottom: 0.1em solid $acc-color-2;
-}
+.dotted-underline-1:after {border-bottom: 0.1em dotted $acc-color-1;}
+.dotted-underline-2:after {border-bottom: 0.1em dotted $acc-color-2;}
+.underline:after {border-bottom: 0.1em solid $acc-color-2;}
 
 p {
     line-height: 1.6rem;
     font-family: $para-font;
     font-size: 1rem;
     color: $para-color;
-}
-
-i {
-    font-family: $italic-font;
-    font-weight: 200;
+    i {
+        font-family: $para-italic-font;
+    }
 }
 
 a, a:link, a:visited, a:active {
-    color: $title-color;
+    color: $acc-color-1;
     text-decoration: none;
 }
 
 a:hover {
     color: $acc-color-2;
+}
+
+a[rel*="external"]:not(.no-indicator)::after {
+    content: "↗";
+    font-size: 0.8em;
+    position: relative;
+    bottom: 0.55em;
+    left: 0.1ch;
+    line-height: normal;
 }
 
 .accent-2 {
@@ -243,7 +246,6 @@ ul.grid-list {
     }
 }
 
-
 .post-card {
     flex: 1;
     display: flex;
@@ -256,7 +258,7 @@ ul.grid-list {
         flex: 1;
         display: flex;
         flex-direction: column;
-        p {
+        .post-excerpt {
             flex: 1;
         }
     }
@@ -280,8 +282,8 @@ ul.grid-list {
         justify-content: center;
         gap: 15px;
         padding: 15px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         border-radius: $card-radius;
 
         outline: 0.2rem dotted $acc-color-2;
@@ -307,13 +309,24 @@ hr {
     margin: 2rem 15% 2rem 15%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     img {
         width: 10rem;
         height: auto;
     }
-    a {
-        font-family: $para-font;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: $para-font;
+    font-size: 0.8rem;
+    justify-content: space-between ;
+    .links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: fit-content;
+        justify-items: center;
         font-size: 0.95rem;
     }
 }
@@ -322,10 +335,36 @@ hr {
     margin: 5rem 0 5rem 0;
     text-align: center;
     img {
-        height: 1.8rem;
+        height: 1.75rem;
         width: auto;
     }
-    font-size: 1.95rem;
+    font-size: 1.9rem;
     color: $acc-color-1;
 
+}
+
+.blog-post-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .confidence {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1ch;
+        img {
+            width: 1rem;
+            height: auto;
+        }
+    }
+
+    .reading-time {
+        text-align: end;
+    }
+}
+
+.blog-post-info > * {
+    flex: 1;
 }
