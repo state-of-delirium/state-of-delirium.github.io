@@ -3,6 +3,7 @@ $acc-color-1: #65928b;
 $acc-color-2: #a06390;
 $page-color: #EFE9E3;
 $edge-color: #c2a385;
+$footnote-card-color: #e9e4dd;
 
 $title-font: "Merriweather";
 $title-italic-font: "Merriweather-Italic";
@@ -12,7 +13,10 @@ $para-italic-font: "WorkSans-Italic";
 $para-color: #121111;
 
 $card-radius: 1rem;
+$quote-offset: 1.5em;
 
+$para-spacing: 1.5em;
+$line-height: 1.8em;
 
 @font-face {
     font-family: $title-font;
@@ -141,7 +145,10 @@ h1 {
 h2 {
     font-size: 1.2rem;  
 }
-h1, h2 {
+h3 {
+    font-size: 1.1rem;
+}
+h1, h2, h3 {
     font-family: $title-font;
     font-weight: 200;
     color: $title-color;
@@ -168,7 +175,7 @@ h1, h2 {
 .underline:after {border-bottom: 0.1em solid $acc-color-2;}
 
 p {
-    line-height: 1.6rem;
+    line-height: $line-height;
     font-family: $para-font;
     font-size: 1rem;
     color: $para-color;
@@ -228,7 +235,7 @@ ul {
     a:hover {
         color: inherit;
         background: transparent;
-        box-shadow: -1px -1px 5px $acc-color-2, 4px 4px 5px $acc-color-1;
+        box-shadow: -1px -1px 4px $acc-color-2, 3px 3px 4px $acc-color-1;
     }
 }
 
@@ -367,4 +374,55 @@ hr {
 
 .blog-post-info > * {
     flex: 1;
+}
+
+.blog-post-content {
+    p {
+        margin: $para-spacing 0 $para-spacing 0;
+    }
+}
+
+.footnote {
+    margin-inline: 0.2ch;
+}
+
+
+.footnotes {
+    margin: 2rem 0 5rem 0;
+    font-family: $para-font;
+}
+
+blockquote {
+    margin-left: $quote-offset;
+    position: relative;
+    P {
+        color: $title-color;
+        font-family: $para-italic-font;
+    }
+}
+
+blockquote::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: -$quote-offset;
+    border-left: 0.2em solid $acc-color-1;
+    border-radius: $card-radius;
+}
+
+.footnote-card > .footnote-card-content {
+    position: absolute;
+    border-radius: 0.5rem;
+    background: $footnote-card-color;
+    padding: 1ch 1.5ch 1ch 1.5ch;
+    z-index: 9999;
+    width: fit-content;
+    max-width: 15%;
+
+    font-family: $para-font;
+    font-size: 0.75rem;
+    line-height: $line-height * 0.75;
+    color: $para-color;
+    border: 1px dotted $acc-color-2;
+    box-shadow: 1px 1px 1px $acc-color-2;
 }

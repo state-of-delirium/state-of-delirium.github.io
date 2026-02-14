@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="icon" href="/assets/images/favicon.svg" type="image/x-icon">   
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/styles.css">
+    <link rel="icon" href="{{site.baseurl}}/assets/images/favicon.svg" type="image/svg+xml">   
   </head>
 
 
@@ -12,7 +12,7 @@
     <div class="dither-bg"></div>
     
     {% include navigation.html %}
-    
+
     <div class="content">
       {{ content }}
     </div>
