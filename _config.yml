@@ -8,22 +8,22 @@ defaults:
     values:
       layout: "posts"
       permalink: "/blog/:title/"
+      thumb: "http://state-of-delirium.github.io/assets/images/blog-empty.svg"
 
 collections:
   authors:
     output: true
 
-url: "{{site.baseurl}}"
+url: "state-of-delirium.github.io"
 
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-target-blank
 
-
 feed:
-  icon: "assets/images/favicon.svg"
-  logo: "assets/images/favicon.svg"
+  icon: "state-of-delirium.github.io/assets/images/favicon.svg"
+  logo: "state-of-delirium.github.io/assets/images/favicon.svg"
 
 target-blank:
   rel: external

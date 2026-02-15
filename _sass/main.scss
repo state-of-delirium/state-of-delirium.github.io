@@ -18,6 +18,9 @@ $quote-offset: 1.5em;
 $para-spacing: 1.5em;
 $line-height: 1.8em;
 
+$blog-min-width: 700px;
+$blog-max-height: 25vh;
+
 @font-face {
     font-family: $title-font;
     src: url("../../assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
@@ -43,8 +46,18 @@ $line-height: 1.8em;
     color: $acc-color-2 !important;
 }
 
+*:focus-visible{
+    outline: 0.2rem dotted $acc-color-2;
+}
+
 .content {
     margin: 0 20vw;
+}
+
+@media (max-width: 1200px) {
+    .content {
+        margin: 0 2vw;
+    }
 }
 
 body, html {
@@ -253,13 +266,50 @@ ul.grid-list {
     }
 }
 
+.post-header {
+    min-width: $blog-min-width;
+    margin-inline: 8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #search-container{
+        display: flex;
+        justify-self: flex-end;
+        height: 2.5rem;
+        #search-input {
+            flex: 1;
+            padding-left: 2ch;
+            background-color: $prim-color;
+            border-radius: $card-radius;
+            font-family: $para-font;
+            color: $title-color;
+            font-size: 1rem;
+            border: 0.1rem dotted $acc-color-1;
+            box-shadow: 1px 1px 1px $acc-color-1;
+        }
+        #search-input:focus {
+            outline: none;
+            border: 0.1rem dotted $acc-color-2;
+            box-shadow: 1px 1px 1px $acc-color-2;
+        }
+    }
+}
+
+#results-container {
+    min-height: 50vh;
+    min-width: $blog-min-width;
+    margin-inline: 8vw;
+}
+
 .post-card {
     flex: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 1rem;
-    height: clamp(15rem, 25vh, 25rem);
+    padding: 0 0.5rem 0 1rem;
+    gap: 1.2rem;
+    height: clamp(15rem, 20vh, 20rem);
+    max-height: $blog-max-height;
 
     .post-text {
         flex: 1;
@@ -271,13 +321,12 @@ ul.grid-list {
     }
 
     img {
-        border-radius: 0  $card-radius $card-radius 0;
+        border-radius: $card-radius;
     }
 }
 
 .post-wrapper {
-    margin-inline: 8vw;
-    min-width: 600px;
+    max-height: $blog-max-height;
 }
 
 .buttons-wrapper {
@@ -328,9 +377,10 @@ hr {
     align-items: flex-end;
     font-family: $para-font;
     font-size: 0.8rem;
-    justify-content: space-between ;
+    justify-content: space-between;
     .links {
         display: grid;
+        gap: 0.75rem;
         grid-template-columns: repeat(2, 1fr);
         width: fit-content;
         justify-items: center;
