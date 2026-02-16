@@ -22,7 +22,9 @@ show_footer: true
           <p><i>{{ post.date | date_to_string }}</i></p>
           
         </div>
-        <img src="{{ post.thumb }}">
+        <div class="image-wrapper">
+          <img src="{{ post.thumb }}">
+        </div>
 
       </li>
     </a>

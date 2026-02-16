@@ -19,9 +19,8 @@ $para-spacing: 1.5em;
 $line-height: 1.8em;
 
 :root {
-    --blog-min-width: 700px;
-    --blog-max-height: 25vh;
-    --blog-margin-inline: 8vw;
+    --blog-margin-inline: 0;
+    --content-margin-inline: 20vw;
 }
 
 // Fonts
@@ -45,49 +44,68 @@ $line-height: 1.8em;
     src: url("../../assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
 }
 
-// Media Queries
+// Media queries for margins/text
 @media only screen and (max-width: 600px) { 
     html { font-size: 75%;}
+    :root{--blog-margin-inline: 2vw;
+    --content-margin-inline: 5vw;}
+}
+@media only screen and (max-width: 768px) and (min-width: 600px) { 
+    html { font-size: 80%;}
+    :root{--blog-margin-inline: 2vw;
+    --content-margin-inline: 10vw;}
+}
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+    html {font-size: 85%;}
+    :root{--blog-margin-inline: 2vw;
+    --content-margin-inline: 10vw;}
+}
+@media only screen and (max-width: 1200px) and (min-width: 992px) {
+    html {font-size: 90%;}
+    :root{--blog-margin-inline: 2vw;
+    --content-margin-inline: 15vw;}
+}
+@media only screen and (max-width: 1400px) and (min-width: 1200px) {
+    html {font-size: 95%;}
+    :root{--blog-margin-inline: 4vw;
+    --content-margin-inline: 15vw;}
+}
+@media only screen and (max-width: 1600px) and (min-width: 1400px) {
+    html {font-size: 100%;}
+    :root{--blog-margin-inline: 4vw;
+    --content-margin-inline: 15vw;}
+}
+@media only screen and (max-width: 1800px) and (min-width: 1600px) {
+    html {font-size: 100%;}
+    :root {--blog-margin-inline: 4vw;
+    --content-margin-inline: 20vw;}
+}
+@media only screen and (min-width: 1800px) {
+    html {font-size: 100%;}
+    :root {--blog-margin-inline: 6vw;
+    --content-margin-inline: 20vw;}
+}
+// Media queries for other stuff
+@media only screen and (max-width: 600px) {
     .buttons-wrapper {scale: 0.8;}
-    .post-card {img {display:none;}}
-    :root {
-        --blog-max-height: 30vh;
-        --blog-margin-inline: 0vw;
-    }
+    .footer {margin: 1rem 0 5% 0 !important;}
+}
+@media only screen and (max-width: 768px) {
+    .image-wrapper {visibility: collapse;}
 }
 @media only screen and (max-width: 992px) {
-    .footer {margin: 2rem 4rem 5% 4rem !important;}
+    .footer {margin: 1rem 3rem 5% 3rem !important;}
     hr {width: 90% !important;}
     nav {padding-inline: 2rem !important;}
 }
-@media only screen and (max-width: 992px) and (orientation: landscape) {.post-card {img {display:none;}}}
-@media only screen and (max-width: 1600px) {.content {margin: 0 10vw;}}
-@media only screen and (max-width: 1800px) {.content {margin: 0 15vw;}}
-@media only screen and (max-width: 1200px) {
-    .content {margin: 0 4vw;}
-    :root {
-        --blog-max-height: 10vh;
-        --blog-min-width: 300px;
-        --blog-margin-inline: 0;
+@media (max-width: 1200px) {
+    ul {
+        flex-direction: column !important;
     }
 }
-@media only screen and (min-width: 600px) { 
-    html { font-size: 80%;}
-    :root {
-        --blog-max-height: 40vh;
-        --blog-margin-inline: 0vw;
-    } 
-}
-@media only screen and (min-width: 768px) {html {font-size: 85%;}}
-@media only screen and (min-width: 992px) {html {font-size: 90%;}}
-@media only screen and (min-width: 1200px) {
-    html { font-size: 100%;}
-    .content {margin: 0 20vw;}
-    :root {
-        --blog-max-height: 25vh;
-        --blog-min-width: 700px;
-        --blog-margin-inline: 8vw;
-    }
+
+.content {
+    margin-inline: var(--content-margin-inline);
 }
 
 .currentNav {
@@ -101,7 +119,7 @@ $line-height: 1.8em;
 body, html {
     padding: 0;
     margin: 0;
-    background-color: transparent;
+    min-width: 350px;
 }
 
 body, html, a {
@@ -121,23 +139,16 @@ body, html, a {
     content: "";
     position: absolute;
     inset: 0;
-
     background-image: radial-gradient($edge-color 50%, transparent 50%);
     background-size: 0.35rem 0.35rem;
-
-    -webkit-mask-image: linear-gradient(
+    $gradient: linear-gradient(
         to right, 
         rgba(0,0,0,1) 0%,
         rgba(0,0,0,0) 10% 90%,
         rgba(0,0,0,1) 100%
     );
-    mask-image: linear-gradient(
-        to right, 
-        black 0%,
-        transparent 10% 90%,
-        black 100%
-    );
-
+    -webkit-mask-image: $gradient;
+    mask-image: $gradient;
     opacity: 0.25;
 }
 
@@ -296,12 +307,6 @@ ul.grid-list {
     flex-direction: row;
 }
 
-@media (max-width: 1200px) {
-    ul {
-        flex-direction: column !important;
-    }
-}
-
 .post-header {
     min-width: var(--blog-min-width);
     margin-inline: var(--blog-margin-inline);
@@ -332,20 +337,17 @@ ul.grid-list {
 }
 
 #results-container {
-    min-height: calc(2 * var(--blog-max-height));
-    min-width: var(--blog-min-width);
     margin-inline: var(--blog-margin-inline);
 }
 
 .post-card {
+    width: 100%;
+    height: 100%;
     flex: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 0.5rem 0 1rem;
     gap: 1.2rem;
-    height: clamp(10rem, 20vh, 20rem);
-    max-height: var(--blog-max-height);
 
     .post-text {
         flex: 1;
@@ -356,13 +358,23 @@ ul.grid-list {
         }
     }
 
-    img {
-        border-radius: $card-radius;
+    .image-wrapper {
+        flex: 0.4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img {
+            border-radius: $card-radius;
+            width: 100%;
+            height: auto;
+        }
     }
 }
 
 .post-wrapper {
-    max-height: var(--blog-max-height);
+    display: inline-block;
+    height: fit-content;
+    padding-right: 1rem;
 }
 
 .buttons-wrapper {

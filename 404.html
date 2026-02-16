@@ -1,0 +1,33 @@
+---
+layout: default
+title: 404
+permalink: /404
+---
+<div class="four-oh-four">
+    <video id="404" width="718" height="718" muted playsinline autoplay>
+    <source src="{{site.baseurl}}/assets/videos/404.webm" type="video/webm" />
+    <h1 class="underline">404</h1>
+    </video>
+    <h2>That page doesn't exist! Return to the <a href="/">Home</a> page</h2>
+
+</div>
+
+<style>
+    .four-oh-four {
+        padding-top: 2rem;
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        video {
+            width: 35rem;
+            height: auto;
+        }
+        h2 {
+            font-size: 1.45rem;
+        }
+    }
+</style>
+
