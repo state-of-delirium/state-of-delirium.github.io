@@ -18,9 +18,13 @@ $quote-offset: 1.5em;
 $para-spacing: 1.5em;
 $line-height: 1.8em;
 
-$blog-min-width: 700px;
-$blog-max-height: 25vh;
+:root {
+    --blog-min-width: 700px;
+    --blog-max-height: 25vh;
+    --blog-margin-inline: 8vw;
+}
 
+// Fonts
 @font-face {
     font-family: $title-font;
     src: url("../../assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
@@ -41,6 +45,50 @@ $blog-max-height: 25vh;
     src: url("../../assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
 }
 
+// Media Queries
+@media only screen and (max-width: 600px) { 
+    html { font-size: 75%;}
+    .buttons-wrapper {scale: 0.8;}
+    .post-card {img {display:none;}}
+    :root {
+        --blog-max-height: 30vh;
+        --blog-margin-inline: 0vw;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .footer {margin: 2rem 4rem 5% 4rem !important;}
+    hr {width: 90% !important;}
+    nav {padding-inline: 2rem !important;}
+}
+@media only screen and (max-width: 992px) and (orientation: landscape) {.post-card {img {display:none;}}}
+@media only screen and (max-width: 1600px) {.content {margin: 0 10vw;}}
+@media only screen and (max-width: 1800px) {.content {margin: 0 15vw;}}
+@media only screen and (max-width: 1200px) {
+    .content {margin: 0 4vw;}
+    :root {
+        --blog-max-height: 10vh;
+        --blog-min-width: 300px;
+        --blog-margin-inline: 0;
+    }
+}
+@media only screen and (min-width: 600px) { 
+    html { font-size: 80%;}
+    :root {
+        --blog-max-height: 40vh;
+        --blog-margin-inline: 0vw;
+    } 
+}
+@media only screen and (min-width: 768px) {html {font-size: 85%;}}
+@media only screen and (min-width: 992px) {html {font-size: 90%;}}
+@media only screen and (min-width: 1200px) {
+    html { font-size: 100%;}
+    .content {margin: 0 20vw;}
+    :root {
+        --blog-max-height: 25vh;
+        --blog-min-width: 700px;
+        --blog-margin-inline: 8vw;
+    }
+}
 
 .currentNav {
     color: $acc-color-2 !important;
@@ -50,21 +98,10 @@ $blog-max-height: 25vh;
     outline: 0.2rem dotted $acc-color-2;
 }
 
-.content {
-    margin: 0 20vw;
-}
-
-@media (max-width: 1200px) {
-    .content {
-        margin: 0 2vw;
-    }
-}
-
 body, html {
     padding: 0;
     margin: 0;
     background-color: transparent;
-    min-width: 1000px;
 }
 
 body, html, a {
@@ -91,8 +128,7 @@ body, html, a {
     -webkit-mask-image: linear-gradient(
         to right, 
         rgba(0,0,0,1) 0%,
-        rgba(0,0,0,0) 10%,
-        rgba(0,0,0,0) 90%,
+        rgba(0,0,0,0) 10% 90%,
         rgba(0,0,0,1) 100%
     );
     mask-image: linear-gradient(
@@ -115,7 +151,7 @@ nav {
         flex: 1;
         font-family: $title-font;
         img {
-            width: 8rem;
+            width: 8.5rem;
             height: auto;
         }
     }
@@ -267,8 +303,8 @@ ul.grid-list {
 }
 
 .post-header {
-    min-width: $blog-min-width;
-    margin-inline: 8vw;
+    min-width: var(--blog-min-width);
+    margin-inline: var(--blog-margin-inline);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -296,9 +332,9 @@ ul.grid-list {
 }
 
 #results-container {
-    min-height: 50vh;
-    min-width: $blog-min-width;
-    margin-inline: 8vw;
+    min-height: calc(2 * var(--blog-max-height));
+    min-width: var(--blog-min-width);
+    margin-inline: var(--blog-margin-inline);
 }
 
 .post-card {
@@ -308,8 +344,8 @@ ul.grid-list {
     justify-content: space-between;
     padding: 0 0.5rem 0 1rem;
     gap: 1.2rem;
-    height: clamp(15rem, 20vh, 20rem);
-    max-height: $blog-max-height;
+    height: clamp(10rem, 20vh, 20rem);
+    max-height: var(--blog-max-height);
 
     .post-text {
         flex: 1;
@@ -326,7 +362,7 @@ ul.grid-list {
 }
 
 .post-wrapper {
-    max-height: $blog-max-height;
+    max-height: var(--blog-max-height);
 }
 
 .buttons-wrapper {
@@ -428,7 +464,7 @@ hr {
 
 .blog-post-content {
     p {
-        margin: $para-spacing 0 $para-spacing 0;
+        margin-block: $para-spacing;
     }
 }
 

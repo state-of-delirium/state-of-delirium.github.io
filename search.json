@@ -6,8 +6,8 @@ layout: none
     {
         "title" : "{{ post.title | escape }}",
         "url" : "{{ site.baseurl }}{{ post.url }}",
-        "date" : "{{ post.date}}",
-        "author" : "{{ post.author}}",
+        "date" : "{{ post.date | date_to_string }}",
+        "author" : "{{ post.author }}",
         "excerpt" : "{{ post.excerpt | strip_html | strip_newlines | escape }}",
         "thumb": "{{ post.thumb }}"
 

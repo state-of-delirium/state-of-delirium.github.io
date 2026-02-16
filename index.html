@@ -2,6 +2,7 @@
 layout: default
 title: "Home"
 show_footer: true
+permalink: "/"
 ---
 
 
@@ -19,7 +20,7 @@ show_footer: true
     <h2><i><span class="accent-2">Recent Posts</span></i></h2>
     <ul class="grid-list">
     {% for post in site.posts limit: 3 %}
-        <a href="{{ post.url }}">
+        <a href="{{ post.url }}" draggable="false">
             <li>
             <h3>{{ post.title }}</h3>
             <p>{{ post.excerpt }}</p>

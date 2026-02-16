@@ -7,7 +7,7 @@ defaults:
       type: "posts"
     values:
       layout: "posts"
-      permalink: "/blog/:title/"
+      permalink: "/blog/:title"
       thumb: "http://state-of-delirium.github.io/assets/images/blog-empty.svg"
 
 collections:
