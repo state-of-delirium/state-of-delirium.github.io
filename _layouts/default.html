@@ -5,6 +5,15 @@
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" href="{{site.baseurl}}/assets/css/styles.css">
     <link rel="icon" href="{{site.baseurl}}/assets/images/favicon.svg" type="image/svg+xml">   
+    <script type="module">
+    // Initialize an agent at application startup, once per page/app.
+    const botdPromise = import('https://openfpcdn.io/botd/v2').then((Botd) => Botd.load())
+    // Get detection results when you need them.
+    botdPromise
+        .then((botd) => botd.detect())
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error))
+</script>
   </head>
 
 
