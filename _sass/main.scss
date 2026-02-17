@@ -566,3 +566,18 @@ blockquote::before {
     border: 1px dotted $acc-color-2;
     box-shadow: 1px 1px 1px $acc-color-2;
 }
+
+.blog-post-content {
+    .center {
+        display: flex;
+        justify-content: center;
+    }
+    .right {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .left {
+        display: flex;
+        justify-content: flex-start;
+    }
+}

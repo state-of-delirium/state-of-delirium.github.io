@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "is anyone listening?", "it was here a moment ago", "it's fading", "it's missing", "echoes in the CSS", "it's all connected", "who wrote this?", "delirious",
         "under the floorboards", "don't look back", "3:30 AM", "i spent so long on this", "just a dream?", "time is an ouroboros", "broken glass and bits", 
         "the color of delirium", "fever dreams", "house of leaves", "fragmented thoughts", "marginalia of the mind", "scribbled in haste", "lost in the dither",
-        "did you see it?", "master mirror", "glowin' a fire", "till the stars expire",
-        "???", "<--", "-->", "~~~", "(?)", "who?", "why?", "when?", "where?", "what?"
+        "did you see it?", "master mirror", "glowin' a fire", "till the stars expire"
     ];
 
     const fonts = ["cursive-1", "cursive-2", "cursive-3"];
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         negRots.push(-i);
     }
 
-    const shuffle = (array) => array.sort(() => Math.random() - 0.5);
     shuffle(thoughts);
     shuffle(posRots);
     shuffle(negRots);
@@ -48,9 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const text = thoughts.pop();
         const font = fonts[Math.floor(Math.random() * fonts.length)];
-        const fontSize = (Math.random() * (1.3 - 1.15) + 1.15).toFixed(2);
+        const fontSize = (Math.random() * (1.3 - 1.25) + 1.25).toFixed(2);
         const color = Math.random() < 0.5 ? "accent-1" : "accent-2"
-        const hPos = Math.random() * 8;
+        const hPos = Math.random() * (9 - -0.2) -0.2;
         // + & - rotation for each side
         const rotation = (i % 4 < 2) ? posRots.pop() : negRots.pop();
 
@@ -69,3 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(marginalia);
     }
 });
+
+function shuffle(array) {
+        let currentIndex = array.length;
+        while (currentIndex != 0) {
+            let randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+    }
