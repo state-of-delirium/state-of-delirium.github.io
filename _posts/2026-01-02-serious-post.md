@@ -2,7 +2,7 @@
 author: "Delirium"
 title: "A Serious Post"
 excerpt: "Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure."
-thumb: "https://picsum.photos/200"
+thumb: "https://picsum.photos/600"
 confidence: "high"
 ---
 ### This is Serious

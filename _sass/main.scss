@@ -6,11 +6,14 @@ $edge-color: #c2a385;
 $footnote-card-color: #e9e4dd;
 
 $title-font: "Merriweather";
-$title-italic-font: "Merriweather-Italic";
 $title-color: #3b342e;
 $para-font: "WorkSans";
-$para-italic-font: "WorkSans-Italic";
+$mono-font: "CourierPrime";
 $para-color: #121111;
+
+$cursive-1: "cursive-1";
+$cursive-2: "cursive-2";
+$cursive-3: "cursive-3";
 
 $card-radius: 1rem;
 $quote-offset: 1.5em;
@@ -18,9 +21,12 @@ $quote-offset: 1.5em;
 $para-spacing: 1.5em;
 $line-height: 1.8em;
 
+$min-width: 350px;
+
 :root {
     --blog-margin-inline: 0;
     --content-margin-inline: 20vw;
+    --gradient-width: 10%;
 }
 
 // Fonts
@@ -30,8 +36,9 @@ $line-height: 1.8em;
 }
 
 @font-face {
-    font-family: $title-italic-font;
+    font-family: $title-font;
     src: url("../../assets/fonts/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf");
+    font-style: italic;
 }
 
 @font-face {
@@ -40,15 +47,28 @@ $line-height: 1.8em;
 }
 
 @font-face {
-    font-family: $para-italic-font;
+    font-family: $para-font;
     src: url("../../assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
+    font-style: italic;
+}
+@font-face {
+    font-family: $cursive-1;
+    src: url("../../assets/fonts/IndieFlower-Regular.ttf");
+}
+@font-face {
+    font-family: $cursive-2;
+    src: url("../../assets/fonts/NothingYouCouldDo-Regular.ttf");
+}
+@font-face {
+    font-family: $cursive-3;
+    src: url("../../assets/fonts/ReenieBeanie-Regular.ttf");
 }
 
 // Media queries for margins/text
 @media only screen and (max-width: 600px) { 
     html { font-size: 75%;}
     :root{--blog-margin-inline: 2vw;
-    --content-margin-inline: 5vw;}
+    --content-margin-inline: 7vw;}
 }
 @media only screen and (max-width: 768px) and (min-width: 600px) { 
     html { font-size: 80%;}
@@ -72,23 +92,24 @@ $line-height: 1.8em;
 }
 @media only screen and (max-width: 1600px) and (min-width: 1400px) {
     html {font-size: 100%;}
-    :root{--blog-margin-inline: 4vw;
+    :root{--blog-margin-inline: 6vw;
     --content-margin-inline: 15vw;}
 }
 @media only screen and (max-width: 1800px) and (min-width: 1600px) {
     html {font-size: 100%;}
-    :root {--blog-margin-inline: 4vw;
+    :root {--blog-margin-inline: 6vw;
     --content-margin-inline: 20vw;}
 }
 @media only screen and (min-width: 1800px) {
     html {font-size: 100%;}
-    :root {--blog-margin-inline: 6vw;
+    :root {--blog-margin-inline: 8vw;
     --content-margin-inline: 20vw;}
 }
 // Media queries for other stuff
 @media only screen and (max-width: 600px) {
     .buttons-wrapper {scale: 0.8;}
     .footer {margin: 1rem 0 5% 0 !important;}
+    :root {--gradient-width: 5%;}
 }
 @media only screen and (max-width: 768px) {
     .image-wrapper {visibility: collapse;}
@@ -97,11 +118,15 @@ $line-height: 1.8em;
     .footer {margin: 1rem 3rem 5% 3rem !important;}
     hr {width: 90% !important;}
     nav {padding-inline: 2rem !important;}
+    :root {--gradient-width: 8.5%;}
+    .marginalia{display: none;}
 }
-@media (max-width: 1200px) {
-    ul {
-        flex-direction: column !important;
-    }
+@media only screen and (max-width: 1200px) {
+    ul {flex-direction: column !important;}
+}
+
+@media only screen and (min-width: 1600px) {
+    :root {--gradient-width: 15%;}
 }
 
 .content {
@@ -119,7 +144,8 @@ $line-height: 1.8em;
 body, html {
     padding: 0;
     margin: 0;
-    min-width: 350px;
+    min-width: $min-width;
+    position: relative;
 }
 
 body, html, a {
@@ -137,20 +163,22 @@ body, html, a {
 
 .dither-bg::before {
     content: "";
-    position: absolute;
+    position: fixed;
+    height: 100%;
     inset: 0;
     background-image: radial-gradient($edge-color 50%, transparent 50%);
     background-size: 0.35rem 0.35rem;
     $gradient: linear-gradient(
         to right, 
         rgba(0,0,0,1) 0%,
-        rgba(0,0,0,0) 10% 90%,
+        rgba(0,0,0,0.15) var(--gradient-width) calc(100% - var(--gradient-width)),
         rgba(0,0,0,1) 100%
     );
     -webkit-mask-image: $gradient;
     mask-image: $gradient;
-    opacity: 0.25;
+    opacity: 0.3;
 }
+
 
 nav {
     display: flex;
@@ -203,18 +231,22 @@ h1 {
     text-align: center;
 }
 h2 {
-    font-size: 1.2rem;  
+    font-size: 1.3rem;  
 }
 h3 {
+    font-size: 1.2rem;
+}
+h4 {
     font-size: 1.1rem;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: $title-font;
     font-weight: 200;
     color: $title-color;
-    i {
-        font-family: $title-italic-font;
-    }
+}
+
+.mono {
+    font-family: $mono-font;
 }
 
 .dotted-underline-1, .dotted-underline-2, .underline {
@@ -230,18 +262,15 @@ h1, h2, h3 {
 
 }
 
-.dotted-underline-1:after {border-bottom: 0.1em dotted $acc-color-1;}
-.dotted-underline-2:after {border-bottom: 0.1em dotted $acc-color-2;}
-.underline:after {border-bottom: 0.1em solid $acc-color-2;}
+.dotted-underline-1:after {border-bottom: 0.115em dotted $acc-color-1;}
+.dotted-underline-2:after {border-bottom: 0.115em dotted $acc-color-2;}
+.underline:after {border-bottom: 0.115em solid $acc-color-2;}
 
 p {
     line-height: $line-height;
     font-family: $para-font;
     font-size: 1rem;
     color: $para-color;
-    i {
-        font-family: $para-italic-font;
-    }
 }
 
 a, a:link, a:visited, a:active {
@@ -260,6 +289,19 @@ a[rel*="external"]:not(.no-indicator)::after {
     bottom: 0.55em;
     left: 0.1ch;
     line-height: normal;
+}
+
+.marginalia {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.accent-1 {
+    color: $acc-color-1;
 }
 
 .accent-2 {
@@ -294,7 +336,7 @@ ul {
 
     a:hover {
         color: inherit;
-        background: transparent;
+        background: $page-color;
         box-shadow: -1px -1px 4px $acc-color-2, 3px 3px 4px $acc-color-1;
     }
 }
@@ -347,7 +389,7 @@ ul.grid-list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 1.2rem;
+    gap: 3rem;
 
     .post-text {
         flex: 1;
@@ -359,7 +401,7 @@ ul.grid-list {
     }
 
     .image-wrapper {
-        flex: 0.4;
+        flex: 0.5;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -495,7 +537,7 @@ blockquote {
     position: relative;
     P {
         color: $title-color;
-        font-family: $para-italic-font;
+        font-style: italic;
     }
 }
 

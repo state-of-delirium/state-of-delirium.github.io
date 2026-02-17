@@ -17,7 +17,7 @@ permalink: "/"
 </div>
 
 <div class="recentPosts">
-    <h2><i><span class="accent-2">Recent Posts</span></i></h2>
+    <h3><i><span class="accent-2">Recent Posts</span></i></h3>
     <ul class="grid-list">
     {% for post in site.posts limit: 3 %}
         <a href="{{ post.url }}" draggable="false">
@@ -43,3 +43,6 @@ permalink: "/"
     </div>
 </div>
 
+<script>
+    {% include marginalia.js %}
+</script>

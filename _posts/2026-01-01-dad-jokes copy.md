@@ -2,7 +2,7 @@
 author: "Delirium"
 title: "Dad Jokes"
 excerpt: "A horse walks into a bar…. Barman asks \"why the long face?\". I’d tell you my best bread puns… but they're on a knead to dough basis."
-thumb: "https://picsum.photos/200/200"
+thumb: "https://picsum.photos/600/500"
 ---
 ### Here are your dad jokes!
 
