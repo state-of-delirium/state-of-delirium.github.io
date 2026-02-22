@@ -6,7 +6,7 @@ permalink: "/"
 ---
 
 
-<div class="about">
+<section class="about">
     <h1><span class="dotted-underline-1">Some random heading</span></h1>
     <br>
     <p>
@@ -14,23 +14,22 @@ permalink: "/"
     As a syndrome, delirium presents with disturbances in attention, awareness, and higher-order cognition. <a href="/">Internal link</a>
     People with delirium may experience other <a href="https://en.wikipedia.org/wiki/Neuropsychiatry">External Link</a> disturbances including changes in psychomotor activity, disrupted sleep-wake cycle, emotional disturbances, disturbances of consciousness, or altered state of consciousness, as well as perceptual disturbances, although these features are not required for diagnosis
     </p>
-</div>
+</section>
 
-<div class="recentPosts">
+<section class="recentPosts">
     <h3><i><span class="accent-2">Recent Posts</span></i></h3>
     <ul class="grid-list">
-    {% for post in site.posts limit: 3 %}
-        <a href="{{ post.url }}" draggable="false">
-            <li>
+        {% for post in site.posts limit: 3 %}
+        <li>
             <h3>{{ post.title }}</h3>
             <p>{{ post.excerpt }}</p>
-            </li>
-        </a>
-    {% endfor %}
+            <a href="{{ post.url }}" class="invis-card-link"></a>
+        </li>
+        {% endfor %}
     </ul>
-</div>
+</section>
 
-<div class="buttons-wrapper">
+<aside class="buttons-wrapper">
     <div class="buttons">
         <a href="/"><img src="../../assets/images/88x31/DELIRIUM.gif" alt="Delirium"></a>
         <img src="../../assets/images/88x31/Jekyll.png" alt="Jekyll">
@@ -41,7 +40,7 @@ permalink: "/"
         <img src="../../assets/images/88x31/Witcher3.png" alt="Witcher3">
         <img src="../../assets/images/88x31/Ao3.gif" alt="Ao3">
     </div>
-</div>
+</aside>
 
 <script>
     {% include marginalia.js %}

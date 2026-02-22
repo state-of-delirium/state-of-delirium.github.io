@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "did you see it?", "master mirror", "glowin' a fire", "till the stars expire"
     ];
 
-    const fonts = ["cursive-1", "cursive-2", "cursive-3"];
+    const fonts = ["Nothing You Could Do", "Shadows Into Light"];
     const container = document.body;
 
     let posRots = [];
     let negRots = [];
-    for (let i = 2; i <= 12; i+=2) {
+    for (let i = 2; i <= 8; i+=2) {
         posRots.push(i);
         negRots.push(-i);
     }
@@ -21,20 +21,22 @@ document.addEventListener("DOMContentLoaded", () => {
     shuffle(negRots);
 
     const pageHeight = document.body.scrollHeight;
-    const maxNotes = Math.min(thoughts.length, Math.floor(pageHeight / 350)); 
+    const maxNotes = Math.min(thoughts.length, Math.floor(pageHeight / 350), 2*posRots.length); 
     
     const placedNotes = [];
-    const minDistance = 8;
+    const minDistance = 10;
+    let sideLeft = Math.random() < 0.5 ? true : false;
 
-    for (let i = 0; i < maxNotes; i++) {
-        let side = i % 2 === 0 ? "left" : "right";
+    for (let i = Math.random() < 0.5 ? 0 : 1; i < maxNotes; i++) {
+        let side = sideLeft ? "left" : "right";
+        sideLeft = !sideLeft;
         let vPos = 0;
         let attempts = 0;
         let validPos = false;
 
         // Check for vertical spacing, exit after 10
         while (!validPos && attempts < 10) {
-            vPos = (Math.random() * 90) + 5;
+            vPos = (Math.random() * (91 - 7)) + 7;
             validPos = !placedNotes.some(note => 
                 note.side === side && Math.abs(note.top - vPos) < minDistance
             );
@@ -48,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const font = fonts[Math.floor(Math.random() * fonts.length)];
         const fontSize = (Math.random() * (1.3 - 1.25) + 1.25).toFixed(2);
         const color = Math.random() < 0.5 ? "accent-1" : "accent-2"
-        const hPos = Math.random() * (9 - -0.2) -0.2;
+        const hPos = (Math.random() * (6 - 1)) + 1;
         // + & - rotation for each side
         const rotation = (i % 4 < 2) ? posRots.pop() : negRots.pop();
 
@@ -69,11 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function shuffle(array) {
-        let currentIndex = array.length;
-        while (currentIndex != 0) {
-            let randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-            [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
-        }
+    let currentIndex = array.length;
+    while (currentIndex != 0) {
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
     }
+}

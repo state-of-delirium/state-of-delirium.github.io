@@ -27,36 +27,33 @@ document.addEventListener("DOMContentLoaded", function() {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
     
-      
-
         if (targetElement) {
         const targetElementInner = targetElement.innerText.slice(0, -1);
         const position = link.getBoundingClientRect();
         const div = document.createElement("div");
-        div.className = "footnote-card-content";
+        div.className = "footnote-card";
         div.style.position = "absolute";
         div.style.left = (position.left + window.scrollX) + "px";
         div.style.top = (position.top + window.scrollY) + "px";
         div.textContent = targetElementInner;
 
         const a = document.createElement("a");
-        a.className = "footnote-card";
+        a.className = "invis-card-link";
         a.href = href;
+        div.appendChild(a);
 
-        a.appendChild(div);
-
-        a.addEventListener("mouseover", function(event) {
+        div.addEventListener("mouseover", function(event) {
             const div2 = document.querySelector(".footnote-card");
             if (!div2) {
-                document.body.appendChild(a);
+                document.body.appendChild(div);
             }
         })
 
-        a.addEventListener("mouseout", function(event) {
-            a.remove();
+        div.addEventListener("mouseout", function(event) {
+            div.remove();
         })
 
-        document.body.appendChild(a);
+        document.body.appendChild(div);
         }
 
       

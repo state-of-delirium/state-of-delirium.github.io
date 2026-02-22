@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(data => {
                     data.forEach(result => {
                         const div = document.createElement("div");
-                        div.innerHTML = `<a href="${result.url}" class="post-wrapper"><li class="post-card"><div class="post-text"><h2><span class="underline">${result.title}</span></h2><p class="post-excerpt">${result.excerpt}</p><p><i>${result.date}</i></p></div><div class="image-wrapper"><img src="${result.thumb}"></div></li></a>`;
+                        div.innerHTML = `<li><div class="post-text"><h2><span class="dotted-underline-2">${result.title}</span></h2><p class="post-excerpt">${result.excerpt}</p><p><i>${result.date}</i></p></div><div class="image-wrapper"><img src="${result.thumb}" loading="lazy"></div><a href="${result.url}" class="invis-card-link"></a></li>`;
                         resultsContainer.appendChild(div.firstElementChild);
                     });
                 })

@@ -11,9 +11,9 @@ $para-font: "WorkSans";
 $mono-font: "CourierPrime";
 $para-color: #121111;
 
-$cursive-1: "cursive-1";
-$cursive-2: "cursive-2";
-$cursive-3: "cursive-3";
+$cursive-1: "Nothing You Could Do";
+$cursive-2: "Shadows Into Light";
+$special-char-font: "Special Chars";
 
 $card-radius: 1rem;
 $quote-offset: 1.5em;
@@ -30,38 +30,77 @@ $min-width: 350px;
 }
 
 // Fonts
+/* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 @font-face {
-    font-family: $title-font;
-    src: url("../../assets/fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf");
+  font-display: swap;
+  font-family: $title-font;
+  font-style: normal;
+  font-weight: 300;
+  src: url('../../assets/fonts/merriweather.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: $title-font;
-    src: url("../../assets/fonts/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf");
-    font-style: italic;
+  font-display: swap;
+  font-family: $title-font;
+  font-style: italic;
+  font-weight: 300;
+  src: url('../../assets/fonts/merriweather-italic.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: $para-font;
-    src: url("../../assets/fonts/WorkSans-VariableFont_wght.ttf");
+  font-display: swap;
+  font-family: $para-font;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/work-sans.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: $para-font;
-    src: url("../../assets/fonts/WorkSans-Italic-VariableFont_wght.ttf");
-    font-style: italic;
+  font-display: swap;
+  font-family: $para-font;
+  font-style: italic;
+  font-weight: 400;
+  src: url('../../assets/fonts/work-sans-italic.woff2') format('woff2');
 }
+
 @font-face {
-    font-family: $cursive-1;
-    src: url("../../assets/fonts/IndieFlower-Regular.ttf");
+  font-display: swap;
+  font-family: $para-font;
+  font-style: normal;
+  font-weight: 600;
+  src: url('../../assets/fonts/work-sans-600.woff2') format('woff2');
 }
+
 @font-face {
-    font-family: $cursive-2;
-    src: url("../../assets/fonts/NothingYouCouldDo-Regular.ttf");
+  font-display: swap;
+  font-family: $para-font;
+  font-style: italic;
+  font-weight: 600;
+  src: url('../../assets/fonts/work-sans-600italic.woff2') format('woff2'); 
 }
+
 @font-face {
-    font-family: $cursive-3;
-    src: url("../../assets/fonts/ReenieBeanie-Regular.ttf");
+  font-display: swap;
+  font-family: $cursive-1;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/nothing-you-could-do.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $cursive-2;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/shadows-into-light.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $special-char-font;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/special-char.woff2') format('woff2');
 }
 
 // Media queries for margins/text
@@ -119,10 +158,10 @@ $min-width: 350px;
     hr {width: 90% !important;}
     nav {padding-inline: 2rem !important;}
     :root {--gradient-width: 8.5%;}
-    .marginalia{display: none;}
+    .marginalia {display: none;}
 }
 @media only screen and (max-width: 1200px) {
-    ul {flex-direction: column !important;}
+    .recentPosts > ul {flex-direction: column !important;}
 }
 
 @media only screen and (min-width: 1600px) {
@@ -240,8 +279,8 @@ h4 {
     font-size: 1.1rem;
 }
 h1, h2, h3, h4 {
-    font-family: $title-font;
-    font-weight: 200;
+    font-family: $title-font, Georgia, serif;
+    font-weight: 300;
     color: $title-color;
 }
 
@@ -268,7 +307,7 @@ h1, h2, h3, h4 {
 
 p {
     line-height: $line-height;
-    font-family: $para-font;
+    font-family: $para-font, $special-char-font, Arial, sans-serif;
     font-size: 1rem;
     color: $para-color;
 }
@@ -284,6 +323,7 @@ a:hover {
 
 a[rel*="external"]:not(.no-indicator)::after {
     content: "↗";
+    font-family: $special-char-font;
     font-size: 0.8em;
     position: relative;
     bottom: 0.55em;
@@ -315,8 +355,8 @@ ul {
 
     list-style: none;
     margin: 0;
-    a {
-        display: flex;
+    li {
+        position: relative;
         padding: 1rem;
         background-color: $prim-color;
         border-radius: $card-radius;
@@ -334,10 +374,9 @@ ul {
         }
     }
 
-    a:hover {
-        color: inherit;
+    li:hover {
         background: $page-color;
-        box-shadow: -1px -1px 4px $acc-color-2, 3px 3px 4px $acc-color-1;
+        box-shadow: -1px -1px 4px $acc-color-2, 2px 2px 4px $acc-color-1;
     }
 }
 
@@ -349,7 +388,7 @@ ul.grid-list {
     flex-direction: row;
 }
 
-.post-header {
+.posts-header {
     min-width: var(--blog-min-width);
     margin-inline: var(--blog-margin-inline);
     display: flex;
@@ -382,7 +421,7 @@ ul.grid-list {
     margin-inline: var(--blog-margin-inline);
 }
 
-.post-card {
+#results-container > li {
     width: 100%;
     height: 100%;
     flex: 1;
@@ -451,7 +490,7 @@ hr {
     border-top: 0.2rem dotted $edge-color !important;
 }
 
-.footer {
+footer {
     margin: 2rem 15% 2rem 15%;
     display: flex;
     justify-content: space-between;
@@ -550,7 +589,7 @@ blockquote::before {
     border-radius: $card-radius;
 }
 
-.footnote-card > .footnote-card-content {
+.footnote-card {
     position: absolute;
     border-radius: 0.5rem;
     background: $footnote-card-color;
@@ -580,4 +619,10 @@ blockquote::before {
         display: flex;
         justify-content: flex-start;
     }
+}
+
+.invis-card-link {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
 }

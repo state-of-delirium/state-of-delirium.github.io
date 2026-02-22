@@ -9,5 +9,3 @@ if (readTime <= 1) {
 } else {
     readTimeDisplay.innerHTML = readTime.toString() + " mins";
 }
-
-

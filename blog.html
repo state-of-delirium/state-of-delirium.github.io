@@ -4,29 +4,25 @@ title: Blog
 permalink: /blog/
 show_footer: true
 ---
-<div class="post-header">
+<section class="posts-header">
   <h1><span class="dotted-underline-1">Posts</span></h1>
   {% include search.html %}
-</div>
+</section>
 
 <br><br>
 
 <ul class="vertical-list" id="results-container">
   {% for post in site.posts %}
-    <a href="{{ post.url }}" class="post-wrapper" draggable="false">
-      <li class="post-card">
-      
-        <div class="post-text">
-          <h2><span class="dotted-underline-2">{{ post.title }}</span></h2>
-          <p class="post-excerpt">{{ post.excerpt }}</p>
-          <p><i>{{ post.date | date_to_string }}</i></p>
-          
-        </div>
-        <div class="image-wrapper">
-          <img src="{{ post.thumb }}" loading="lazy">
-        </div>
-
-      </li>
-    </a>
+  <li>
+    <div class="post-text">
+      <h2><span class="dotted-underline-2">{{ post.title }}</span></h2>
+      <p class="post-excerpt">{{ post.excerpt }}</p>
+      <p><i>{{ post.date | date_to_string }}</i></p>
+    </div>
+    <div class="image-wrapper">
+      <img src="{{ post.thumb }}" loading="lazy">
+    </div>
+    <a href="{{ post.url }}" class="invis-card-link"></a>
+  </li>
   {% endfor %}
 </ul>

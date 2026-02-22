@@ -8,7 +8,7 @@ defaults:
     values:
       layout: "posts"
       permalink: "/blog/:title"
-      thumb: "http://state-of-delirium.github.io/assets/images/blog-empty.svg"
+      thumb: "https://state-of-delirium.github.io/assets/images/blog-empty.svg"
 
 collections:
   authors:
@@ -27,3 +27,6 @@ feed:
 
 target-blank:
   rel: external
+
+sass:
+  style: compressed
