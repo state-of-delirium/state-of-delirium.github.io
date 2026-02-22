@@ -1,25 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const backlinks = document.querySelectorAll(".reversefootnote");
-
-    backlinks.forEach(link => {
-    link.addEventListener("click", function(event) {
-        event.preventDefault();
-
-        const href = this.getAttribute("href");
-        const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-        targetElement.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-        history.pushState(null, null, href);
-        }
-    });
-    });
-
     const footnotes = document.querySelectorAll(".footnote");
     footnotes.forEach(link => {
     link.addEventListener("mouseover", function(event) {

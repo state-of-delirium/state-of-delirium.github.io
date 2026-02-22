@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     shuffle(negRots);
 
     const pageHeight = document.body.scrollHeight;
-    const maxNotes = Math.min(thoughts.length, Math.floor(pageHeight / 350), 2*posRots.length); 
+    const maxNotes = Math.min(thoughts.length, Math.floor(pageHeight / 400), 2*posRots.length); 
     
     const placedNotes = [];
     const minDistance = 10;
