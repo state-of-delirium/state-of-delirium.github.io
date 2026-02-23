@@ -1,5 +1,11 @@
 <nav>
     <a href="/" class="logo"><img src="{{site.baseurl}}/assets/images/state-of-delirium.svg" alt="STATE OF DELIRIUM"></a>
+    <noscript id="no-js-nav">
+        <details>
+        <summary>No JS?</summary>
+        <p>While this site is functional without JS, minimal scripting is used for small features and aesthetic flourishes. Consider whitelisting!</p>
+        </details>
+    </noscript>
     {% for item in site.data.navigation %}
     <a href="{{ item.link }}" {% if page.url == item.link %}class="currentNav"{% endif %}>
         {{ item.name }}

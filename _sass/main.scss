@@ -217,6 +217,23 @@ body, html, a {
     opacity: 0.3;
 }
 
+details {
+    summary {
+        list-style-position: outside;
+        font-family: $para-font;
+        font-size: 1rem;
+        color: $title-color;
+    }
+    summary::marker {
+        color: $acc-color-1;
+    }
+    p {
+        font-size: 0.85rem;
+        line-height: normal;
+        margin-block: 1ch;
+    }
+}
+
 
 nav {
     display: flex;
@@ -389,12 +406,12 @@ ul.grid-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    #search-container{
+    #search-container {
         display: flex;
         justify-self: flex-end;
         height: 2.5rem;
-        #search-input {
-            flex: 1;
+        gap: 2ch;
+        #search-input, #ddg-search-box {
             padding-left: 2ch;
             background-color: $prim-color;
             border-radius: $card-radius;
@@ -404,10 +421,27 @@ ul.grid-list {
             border: 0.1rem dotted $acc-color-1;
             box-shadow: 1px 1px 1px $acc-color-1;
         }
-        #search-input:focus {
+        #search-input:focus, #ddg-search-box:focus {
             outline: none;
             border: 0.1rem dotted $acc-color-2;
             box-shadow: 1px 1px 1px $acc-color-2;
+        }
+
+        #ddg-search {
+            display: flex;
+            gap: 1ch;
+            .ddg-logo {
+                height: 100%;
+                box-sizing: border-box;
+                width: auto;
+            }
+            #ddg-search-box {
+                height: 100%;
+                box-sizing: border-box;
+            }
+        }
+        #search-input {
+            display: none;
         }
     }
 }
