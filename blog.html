@@ -20,7 +20,7 @@ show_footer: true
       <p><i>{{ post.date | date_to_string }}</i></p>
     </div>
     <div class="image-wrapper">
-      <img src="{{ post.thumb }}" loading="lazy">
+      <img src="{{ post.thumb.src }}" height="{{ post.thumb.height }}" width="{{ post.thumb.width }}" loading="lazy">
     </div>
     <a href="{{ post.url }}" class="invis-card-link"></a>
   </li>

@@ -2,7 +2,10 @@
 author: "Delirium"
 title: "Dad Jokes"
 excerpt: "A horse walks into a bar…"
-thumb: "https://picsum.photos/800/600"
+thumb: 
+    src: "../../assets/images/vhm_1771343549.webp"
+    height: "1000"
+    width: "1000"
 ---
 ### Here are your dad jokes!
 

@@ -2,13 +2,16 @@
 author: "Delirium"
 title: "A Serious Post"
 excerpt: "Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure."
-thumb: "../../assets/images/vhm_1771343549.png"
+thumb: 
+    src: "../../assets/images/vhm_1771343549.webp"
+    height: "1000"
+    width: "1000"
 confidence: "high"
 ---
 ## This is an image
 
 <figure class="center">
-    <img src="../../../assets/images/vhm_1771343549.png" style="width: 15rem; height: auto">
+    <img src="../../../assets/images/vhm_1771343549.webp" style="width: 15rem; height: auto">
 </figure>
 
 ### This is Serious
@@ -17,9 +20,9 @@ confidence: "high"
 
 
 
-Nor again is there anyone who loves or pursues[^1] or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+Nor again is there anyone who loves or pursues[^1] or desires to obtain pain of itself, because it is pain, but because occasionally circumstances **occur** in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to "obtain some advantage" from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
 
-Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally[^2] circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally[^2] circumstances occur in which toil and pain can [procure](https://example.com) him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to <span class="underline-2">find fault</span> with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
 
 Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
 
