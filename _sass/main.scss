@@ -17,8 +17,8 @@ $special-char-font: "Special Chars";
 $card-radius: 1rem;
 $quote-offset: 1.5em;
 
-$para-spacing: 1.5em;
-$line-height: 1.8em;
+$para-spacing: 1.45em;
+$line-height: 2.1em;
 
 $min-width: 350px;
 
@@ -51,7 +51,7 @@ $min-width: 350px;
   font-family: $para-font;
   font-style: normal;
   font-weight: 400;
-  src: url('../../assets/fonts/work-sans.woff2') format('woff2');
+  src: url('../../assets/fonts/worksans.woff2') format('woff2');
 }
 
 @font-face {
@@ -59,7 +59,7 @@ $min-width: 350px;
   font-family: $para-font;
   font-style: italic;
   font-weight: 400;
-  src: url('../../assets/fonts/work-sans-italic.woff2') format('woff2');
+  src: url('../../assets/fonts/worksans-italic.woff2') format('woff2');
 }
 
 @font-face {
@@ -67,7 +67,7 @@ $min-width: 350px;
   font-family: $para-font;
   font-style: normal;
   font-weight: 600;
-  src: url('../../assets/fonts/work-sans-600.woff2') format('woff2');
+  src: url('../../assets/fonts/worksans-600.woff2') format('woff2');
 }
 
 @font-face {
@@ -75,7 +75,7 @@ $min-width: 350px;
   font-family: $para-font;
   font-style: italic;
   font-weight: 600;
-  src: url('../../assets/fonts/work-sans-600italic.woff2') format('woff2'); 
+  src: url('../../assets/fonts/worksans-600italic.woff2') format('woff2'); 
 }
 
 @font-face {
@@ -104,22 +104,22 @@ $min-width: 350px;
 
 // Media queries for margins/text
 @media only screen and (max-width: 600px) { 
-    html { font-size: 75%;}
-    :root{--blog-margin-inline: 2vw;
-    --content-margin-inline: 7vw;}
+    html { font-size: 80%;}
+    :root{--blog-margin-inline: 1vw;
+    --content-margin-inline: 6vw;}
 }
 @media only screen and (max-width: 768px) and (min-width: 600px) { 
-    html { font-size: 80%;}
+    html { font-size: 85%;}
     :root{--blog-margin-inline: 2vw;
     --content-margin-inline: 10vw;}
 }
 @media only screen and (max-width: 992px) and (min-width: 768px) {
-    html {font-size: 85%;}
+    html {font-size: 90%;}
     :root{--blog-margin-inline: 2vw;
     --content-margin-inline: 10vw;}
 }
 @media only screen and (max-width: 1200px) and (min-width: 992px) {
-    html {font-size: 90%;}
+    html {font-size: 95%;}
     :root{--blog-margin-inline: 2vw;
     --content-margin-inline: 15vw;}
 }
@@ -167,6 +167,8 @@ $min-width: 350px;
     :root {--gradient-width: 15%;}
 }
 
+*, *::before, *::after {box-sizing: border-box;}
+
 .content {
     margin-inline: var(--content-margin-inline);
 }
@@ -177,6 +179,12 @@ $min-width: 350px;
 
 *:focus-visible{
     outline: 0.2rem dotted $acc-color-2;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
 }
 
 body, html {
@@ -239,20 +247,19 @@ nav {
     display: flex;
     align-items: center;
     gap: 3rem;
-    padding: 2rem 5rem 3rem;
+    padding: 3rem 5rem 3rem;
     height: 2rem;
     .logo {
         flex: 1;
         font-family: $title-font;
         img {
-            width: 8.5rem;
-            height: auto;
+            width: auto;
+            height: 3.75rem;
         }
     }
     a {
-        font-weight: bold;
         font-size: 1.1rem;
-        font-family: $title-font;
+        font-family: $para-font;
     }
     .rss {
         img {
@@ -291,20 +298,19 @@ h2 {
 h3 {
     font-size: 1.2rem;
 }
-h4 {
-    font-size: 1.1rem;
-}
 h1, h2, h3, h4 {
     font-family: $title-font, Georgia, serif;
     font-weight: 300;
     color: $title-color;
+    font-variant-numeric: lining-nums;
+    overflow-wrap: break-word;
 }
 
-.dotted-underline-1, .dotted-underline-2, .underline {
+.dotted-underline-1, .dotted-underline-2 {
     display: inline-table;
 }
 
-.dotted-underline-1:after, .dotted-underline-2:after, .underline:after {
+.dotted-underline-1:after, .dotted-underline-2:after {
     content: "";
     display: table-caption;
     caption-side: bottom;
@@ -315,13 +321,19 @@ h1, h2, h3, h4 {
 
 .dotted-underline-1:after {border-bottom: 0.115em dotted $acc-color-1;}
 .dotted-underline-2:after {border-bottom: 0.115em dotted $acc-color-2;}
-.underline:after {border-bottom: 0.115em solid $acc-color-2;}
+
+.underline-1 {text-decoration: underline solid $acc-color-1 0.115em;}
+
+.underline-2 {text-decoration: underline solid $acc-color-2 0.115em;}
 
 p {
     line-height: $line-height;
-    font-family: $para-font, $special-char-font, Arial, sans-serif;
-    font-size: 1rem;
+    font-family:$para-font, $special-char-font, Arial, sans-serif;
+    font-size: 1.05rem;
     color: $para-color;
+    text-wrap: pretty;
+    font-variant-numeric: proportional-nums;
+    overflow-wrap: break-word;
 }
 
 a, a:link, a:visited, a:active {
@@ -340,7 +352,7 @@ a[rel*="external"]:not(.no-indicator)::after {
     position: relative;
     bottom: 0.55em;
     left: 0.1ch;
-    line-height: normal;
+    line-height: 0;
 }
 
 .marginalia {
@@ -382,7 +394,7 @@ ul {
         }
 
         p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
     }
 
@@ -432,12 +444,10 @@ ul.grid-list {
             gap: 1ch;
             .ddg-logo {
                 height: 100%;
-                box-sizing: border-box;
                 width: auto;
             }
             #ddg-search-box {
                 height: 100%;
-                box-sizing: border-box;
             }
         }
         #search-input {
@@ -563,6 +573,7 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     .confidence {
         flex: 1;
@@ -589,14 +600,18 @@ footer {
     p {
         margin-block: $para-spacing;
     }
+    margin-inline: var(--blog-margin-inline);
 }
 
 .footnote {
-    margin: 0 0.1ch 0 0.3ch;
+    margin: 0 0.15ch 0 0.4ch;
+}
+sup, sub {
+    line-height: 0;
 }
 
 sup[id^="fnref:"]:target {
-    scroll-margin-top: 400px;
+    scroll-margin-top: 15rem;
     animation: footnote-bg-flash 1s;
     animation-iteration-count: 1;
     .footnote {
@@ -631,7 +646,7 @@ li[id^="fn:"]:target {
 blockquote {
     margin-left: $quote-offset;
     position: relative;
-    P {
+    p {
         color: $title-color;
         font-style: italic;
     }
@@ -682,4 +697,8 @@ blockquote::before {
     position: absolute;
     inset: 0;
     opacity: 0;
+}
+
+.small-caps {
+    font-variant-caps: all-small-caps;
 }

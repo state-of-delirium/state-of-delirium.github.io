@@ -1,3 +1,4 @@
+environment: production
 title: "Delirium"
 
 defaults:
@@ -8,7 +9,7 @@ defaults:
     values:
       layout: "posts"
       permalink: "/blog/:title"
-      thumb: "https://state-of-delirium.github.io/assets/images/blog-empty.svg"
+      thumb: "https://state-of-delirium.github.io/assets/images/blog-empty.webp"
 
 collections:
   authors:
@@ -20,6 +21,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-target-blank
+  - jekyll-minifier
 
 feed:
   icon: "state-of-delirium.github.io/assets/images/favicon.svg"
@@ -30,3 +32,7 @@ target-blank:
 
 sass:
   style: compressed
+
+jekyll-minifier:
+  exclude: "feed.xml"
+  exclude: "*.css"
