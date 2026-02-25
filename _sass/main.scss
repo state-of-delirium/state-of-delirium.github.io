@@ -1,26 +1,4 @@
-$prim-color: #e4dddd;
-$acc-color-1: #65928b;
-$acc-color-2: #a06390;
-$page-color: #EFE9E3;
-$edge-color: #c2a385;
-$footnote-card-color: #e9e4dd;
-
-$title-font: "Merriweather";
-$title-color: #3b342e;
-$para-font: "WorkSans";
-$para-color: #121111;
-
-$cursive-1: "Nothing You Could Do";
-$cursive-2: "Shadows Into Light";
-$special-char-font: "Special Chars";
-
-$card-radius: 1rem;
-$quote-offset: 1.5em;
-
-$para-spacing: 1.45em;
-$line-height: 2.1em;
-
-$min-width: 350px;
+@import "const";
 
 :root {
     --blog-margin-inline: 0;
@@ -102,6 +80,15 @@ $min-width: 350px;
   src: url('../../assets/fonts/special-char.woff2') format('woff2');
 }
 
+@font-face {
+  font-display: swap;
+  font-family: $code-font;
+  font-style: normal;
+  font-weight: 360;
+  src: url('../../assets/fonts/firacode.woff2') format('woff2');
+}
+
+
 // Media queries for margins/text
 @media only screen and (max-width: 600px) { 
     html { font-size: 80%;}
@@ -169,6 +156,8 @@ $min-width: 350px;
 
 *, *::before, *::after {box-sizing: border-box;}
 
+* {padding: 0; margin: 0;}
+
 .content {
     margin-inline: var(--content-margin-inline);
 }
@@ -178,7 +167,27 @@ $min-width: 350px;
 }
 
 *:focus-visible{
-    outline: 0.2rem dotted $acc-color-2;
+    outline: 0.18rem dotted $acc-color-2;
+    outline-offset: 0.35ch;
+}
+
+:disabled {
+	opacity: 0.8;
+	cursor: not-allowed;
+}
+
+body {
+    scrollbar-color: $edge-color transparent;
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $edge-color;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 }
 
 html {
@@ -188,8 +197,6 @@ html {
 }
 
 body, html {
-    padding: 0;
-    margin: 0;
     min-width: $min-width;
     position: relative;
 }
@@ -251,7 +258,6 @@ nav {
     height: 2rem;
     .logo {
         flex: 1;
-        font-family: $title-font;
         img {
             width: auto;
             height: 3.75rem;
@@ -260,6 +266,7 @@ nav {
     a {
         font-size: 1.1rem;
         font-family: $para-font;
+        font-weight: bold;
     }
     .rss {
         img {
@@ -285,7 +292,13 @@ nav {
 }
 
 .about, .recentPosts, .buttons-wrapper {
-    margin: 0 0 10rem;
+    margin-bottom: 10rem;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 h1 {
@@ -293,9 +306,12 @@ h1 {
     text-align: center;
 }
 h2 {
-    font-size: 1.3rem;  
+    font-size: 1.4rem;  
 }
 h3 {
+    font-size: 1.3rem;
+}
+h4 {
     font-size: 1.2rem;
 }
 h1, h2, h3, h4 {
@@ -304,6 +320,23 @@ h1, h2, h3, h4 {
     color: $title-color;
     font-variant-numeric: lining-nums;
     overflow-wrap: break-word;
+    text-wrap: balance;
+    margin-block: $heading-spacing;
+    line-height: 1.1;
+    + ul, + ol, + blockquote, + dl, + table, + div:has(div > pre > code) {
+        margin-top: calc($para-spacing/2);
+    }
+    + p {
+        margin-top: 0;
+    }
+}
+
+h2 + h3, h2 + h4, h3 + h4 {
+    margin-top: $para-spacing;
+}
+
+h2 + h2, h3 + h3, h4 + h4, h3 + h2, h4 + h2, h4 + h3 {
+    margin-top: calc($para-spacing*1.5);
 }
 
 .dotted-underline-1, .dotted-underline-2 {
@@ -323,17 +356,104 @@ h1, h2, h3, h4 {
 .dotted-underline-2:after {border-bottom: 0.115em dotted $acc-color-2;}
 
 .underline-1 {text-decoration: underline solid $acc-color-1 0.115em;}
-
 .underline-2 {text-decoration: underline solid $acc-color-2 0.115em;}
 
 p {
-    line-height: $line-height;
-    font-family:$para-font, $special-char-font, Arial, sans-serif;
-    font-size: 1.05rem;
-    color: $para-color;
     text-wrap: pretty;
     font-variant-numeric: proportional-nums;
     overflow-wrap: break-word;
+}
+
+p, ul, ol, blockquote, dl, table, div:has(div > pre > code) {
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: $para-font, $special-char-font, Arial, sans-serif;
+    margin-block: $para-spacing;
+    color: $para-color;
+}
+
+li > ol, li > ul {
+    margin-block: calc($para-spacing/2);
+}
+
+ul, ol {
+    list-style-position: inside;
+    margin-left: $quote-offset;
+    line-height: 1.5rem;
+    & > ::marker {
+        color: $acc-color-1;
+    }
+    li {   
+        p, h1, h2, h3, h4 {
+            margin-block: 0;
+        }
+        margin-block: calc($para-spacing/2);
+    }
+}
+
+ul ul ul > li {
+    &::marker {
+        content: "• ";
+    }
+    & ul > li::marker {
+        content: "◦ ";
+    }
+}
+
+ol {
+    counter-reset: item-no;
+}
+ol > li {
+    counter-increment: item-no;
+    &::marker {
+        content: counters(item-no, ".") ". ";
+        font-variant-numeric: oldstyle-nums;
+    }
+}
+
+
+blockquote {
+    margin-left: $quote-offset;
+    position: relative;
+    p {
+        color: $title-color;
+        font-style: italic;
+        margin-block: 0;
+    }
+}
+
+dl {
+    dt {
+        font-weight: bold;
+        color: $acc-color-2;
+        margin-bottom: -0.5rem;
+    }
+    dd {
+        margin-left: $quote-offset;
+        font-style: italic;
+        font-size: $alt-font-size;
+        line-height: $alt-line-height;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    margin-inline: auto;
+    font-variant-numeric: tabular-nums lining-nums slashed-zero;
+    background-color: $footnote-card-color;
+    font-size: $alt-font-size;
+    line-height: $alt-line-height;
+    border: 0.15em dotted $acc-color-1;
+    thead {
+        color: $acc-color-1;
+        background-color: $prim-color;
+    }
+    td, th {
+        padding: 0.4ch 4ch 0.4ch 1ch;
+        &:last-child {
+            padding: 0.4ch 1ch 0.4ch 1ch;
+        }
+    }
 }
 
 a, a:link, a:visited, a:active {
@@ -372,29 +492,33 @@ a[rel*="external"]:not(.no-indicator)::after {
     color: $acc-color-2;
 }
 
-ul {
-    padding: 0;
+.vertical-list, .grid-list {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
 
     list-style: none;
-    margin: 0;
+    margin: 1rem 0;
     li {
         position: relative;
-        padding: 1rem;
+        padding: 1.25rem 1rem 1rem 1rem;
         background-color: $prim-color;
         border-radius: $card-radius;
         min-height: 10rem;
         overflow: hidden;
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 0;
 
         h2 {
             padding: 0;
-            margin: 0 0 1rem;
+            margin-bottom: 1rem;
         }
 
         p {
             font-size: 0.95rem;
+            line-height: $line-height * 0.9;
         }
     }
 
@@ -404,11 +528,11 @@ ul {
     }
 }
 
-ul.vertical-list {
+.vertical-list {
     flex-direction: column;
 }
 
-ul.grid-list {
+.grid-list {
     flex-direction: row;
 }
 
@@ -597,10 +721,10 @@ footer {
 }
 
 .blog-post-content {
-    p {
-        margin-block: $para-spacing;
-    }
     margin-inline: var(--blog-margin-inline);
+    hr {
+        width: 100%;
+    }
 }
 
 .footnote {
@@ -641,14 +765,12 @@ li[id^="fn:"]:target {
 .footnotes {
     margin: 2rem 0 5rem 0;
     font-family: $para-font;
-}
-
-blockquote {
-    margin-left: $quote-offset;
-    position: relative;
-    p {
-        color: $title-color;
-        font-style: italic;
+    counter-reset: item-no; 
+    ol {
+        list-style-position: outside;
+        & li::marker {
+            content: counter(item-no) ". ";
+        }
     }
 }
 
@@ -672,7 +794,7 @@ blockquote::before {
 
     font-family: $para-font;
     font-size: 0.75rem;
-    line-height: $line-height * 0.75;
+    line-height: $line-height * 0.7;
     color: $para-color;
     border: 1px dotted $acc-color-2;
     box-shadow: 1px 1px 1px $acc-color-2;
@@ -699,6 +821,32 @@ blockquote::before {
     opacity: 0;
 }
 
-.small-caps {
+.small-caps, abbr {
     font-variant-caps: all-small-caps;
+}
+
+.denominator {
+    font-feature-settings: "nalt" on;
+}
+
+.fraction {
+    font-variant-numeric: diagonal-fractions;
+}
+
+code {
+    background-color: $prim-color;
+    font-family: $code-font, monospace;
+    font-feature-settings:  "cv02", "ss01", "ss02", "ss04", "ss08", "zero";
+}
+
+pre:has(code) {
+    background-color: $footnote-card-color;
+    border: 0.2rem dotted $acc-color-1;
+    padding: 2ch;
+    code {
+        background-color: transparent;
+    }
+    overflow-x: scroll;
+    font-size: $alt-font-size;
+    line-height: $alt-line-height;
 }
