@@ -303,10 +303,12 @@ nav {
 
 h1 {
     font-size: 2.3rem;
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 h2 {
-    font-size: 1.4rem;  
+    font-size: 1.5rem;  
 }
 h3 {
     font-size: 1.3rem;
@@ -316,6 +318,7 @@ h4 {
 }
 h1, h2, h3, h4 {
     font-family: $title-font, Georgia, serif;
+    clear: both;
     font-weight: 300;
     color: $title-color;
     font-variant-numeric: lining-nums;
@@ -323,7 +326,7 @@ h1, h2, h3, h4 {
     text-wrap: balance;
     margin-block: $heading-spacing;
     line-height: 1.1;
-    + ul, + ol, + blockquote, + dl, + table, + div:has(div > pre > code) {
+    + ul, + ol, + blockquote, + dl > dt, + table, + div:has(div > pre > code) {
         margin-top: calc($para-spacing/2);
     }
     + p {
@@ -340,7 +343,7 @@ h2 + h2, h3 + h3, h4 + h4, h3 + h2, h4 + h2, h4 + h3 {
 }
 
 .dotted-underline-1, .dotted-underline-2 {
-    display: inline-table;
+    display: table;
 }
 
 .dotted-underline-1:after, .dotted-underline-2:after {
@@ -364,7 +367,7 @@ p {
     overflow-wrap: break-word;
 }
 
-p, ul, ol, blockquote, dl, table, div:has(div > pre > code) {
+p, ul, ol, blockquote, dt, table, div:has(div > pre > code), figure {
     font-size: $font-size;
     line-height: $line-height;
     font-family: $para-font, $special-char-font, Arial, sans-serif;
@@ -652,6 +655,7 @@ hr {
     width: 80%;
     display: block;
     border-top: 0.2rem dotted $edge-color !important;
+    margin-inline: auto;
 }
 
 footer {
@@ -725,13 +729,53 @@ footer {
     hr {
         width: 100%;
     }
+    figure {
+        width: fit-content;
+        line-height: 0;
+        figcaption {
+            font-size: $alt-font-size;
+            line-height: $alt-line-height;
+            font-style: italic;
+            text-align: center;
+        }
+    }
+    .glow > img {
+        border-radius: $card-radius;
+        box-shadow: 0 8px 20px -5px rgba($acc-color-1, 0.45), 0 15px 45px -2px rgba($acc-color-1, 0.3);     
+    }
+    .center {margin-inline: auto;}
+    .right {margin-left: auto;}
+    .left {margin-right: auto;}
+    .inline-left {
+        float: inline-start;    
+        margin-right: 1.25rem;
+        margin-block: 0;
+        + p {margin-top: 0;}
+    }
+    .inline-right {
+        float: inline-end;
+        margin-left: 1.25rem;
+        margin-block: 0;
+        + p {margin-top: 0;}
+    }
+    p:has(+figure.inline-left), p:has(+figure.inline-right) {
+        margin-bottom: 0.5rem;
+    }
 }
 
 .footnote {
     margin: 0 0.15ch 0 0.4ch;
 }
+
 sup, sub {
     line-height: 0;
+}
+
+ins, .underline-1, .underline-2, del {
+    a[rel*="external"]:not(.no-indicator)::after, sup:has(.footnote) {
+        display: inline-block;
+        text-decoration: none;
+    }
 }
 
 sup[id^="fnref:"]:target {
@@ -798,21 +842,6 @@ blockquote::before {
     color: $para-color;
     border: 1px dotted $acc-color-2;
     box-shadow: 1px 1px 1px $acc-color-2;
-}
-
-.blog-post-content {
-    .center {
-        display: flex;
-        justify-content: center;
-    }
-    .right {
-        display: flex;
-        justify-content: flex-end;
-    }
-    .left {
-        display: flex;
-        justify-content: flex-start;
-    }
 }
 
 .invis-card-link {
