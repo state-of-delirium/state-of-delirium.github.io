@@ -91,17 +91,17 @@
 
 // Media queries for margins/text
 @media only screen and (max-width: 600px) { 
-    html { font-size: 80%;}
+    html { font-size: 85%;}
     :root{--blog-margin-inline: 1vw;
     --content-margin-inline: 6vw;}
 }
 @media only screen and (max-width: 768px) and (min-width: 600px) { 
-    html { font-size: 85%;}
+    html { font-size: 90%;}
     :root{--blog-margin-inline: 2vw;
     --content-margin-inline: 10vw;}
 }
 @media only screen and (max-width: 992px) and (min-width: 768px) {
-    html {font-size: 90%;}
+    html {font-size: 95%;}
     :root{--blog-margin-inline: 2vw;
     --content-margin-inline: 10vw;}
 }
@@ -111,7 +111,7 @@
     --content-margin-inline: 15vw;}
 }
 @media only screen and (max-width: 1400px) and (min-width: 1200px) {
-    html {font-size: 95%;}
+    html {font-size: 100%;}
     :root{--blog-margin-inline: 4vw;
     --content-margin-inline: 15vw;}
 }
@@ -325,7 +325,7 @@ h1, h2, h3, h4 {
     overflow-wrap: break-word;
     text-wrap: balance;
     margin-block: $heading-spacing;
-    line-height: 1.1;
+    line-height: 1.5;
     + ul, + ol, + blockquote, + dl > dt, + table, + div:has(div > pre > code) {
         margin-top: calc($para-spacing/2);
     }
@@ -335,7 +335,7 @@ h1, h2, h3, h4 {
 }
 
 h2 + h3, h2 + h4, h3 + h4 {
-    margin-top: $para-spacing;
+    margin-top: calc($para-spacing*0.5);
 }
 
 h2 + h2, h3 + h3, h4 + h4, h3 + h2, h4 + h2, h4 + h3 {
@@ -351,7 +351,7 @@ h2 + h2, h3 + h3, h4 + h4, h3 + h2, h4 + h2, h4 + h3 {
     display: table-caption;
     caption-side: bottom;
     position: relative;
-    margin-top:-0.15em;
+    margin-top:-0.35em;
 
 }
 
@@ -656,7 +656,7 @@ hr {
     margin-top: 6rem;
     width: 80%;
     display: block;
-    border-top: 0.2rem dotted $edge-color !important;
+    border-top: 0.2rem dotted $edge-color;
     margin-inline: auto;
 }
 
@@ -729,7 +729,10 @@ footer {
 .blog-post-content {
     margin-inline: var(--blog-margin-inline);
     hr {
-        width: 100%;
+        width: 60%;
+        border-color: $acc-color-2;
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
     }
     figure {
         width: fit-content;
