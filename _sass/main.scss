@@ -1,0 +1,883 @@
+@import "const";
+
+:root {
+    --blog-margin-inline: 0;
+    --content-margin-inline: 20vw;
+    --gradient-width: 10%;
+}
+
+// Fonts
+/* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+@font-face {
+  font-display: swap;
+  font-family: $title-font;
+  font-style: normal;
+  font-weight: 300;
+  src: url('../../assets/fonts/merriweather.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $title-font;
+  font-style: italic;
+  font-weight: 300;
+  src: url('../../assets/fonts/merriweather-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $para-font;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/worksans.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $para-font;
+  font-style: italic;
+  font-weight: 400;
+  src: url('../../assets/fonts/worksans-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $para-font;
+  font-style: normal;
+  font-weight: 600;
+  src: url('../../assets/fonts/worksans-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $para-font;
+  font-style: italic;
+  font-weight: 600;
+  src: url('../../assets/fonts/worksans-600italic.woff2') format('woff2'); 
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $cursive-1;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/nothing-you-could-do.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $cursive-2;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/shadows-into-light.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $special-char-font;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/special-char.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: $code-font;
+  font-style: normal;
+  font-weight: 360;
+  src: url('../../assets/fonts/firacode.woff2') format('woff2');
+}
+
+
+// Media queries for margins/text
+@media only screen and (max-width: 600px) { 
+    html { font-size: 85%;}
+    :root{--blog-margin-inline: 1vw;
+    --content-margin-inline: 6vw;}
+}
+@media only screen and (max-width: 768px) and (min-width: 600px) { 
+    html { font-size: 90%;}
+    :root{--blog-margin-inline: 2vw;
+    --content-margin-inline: 10vw;}
+}
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+    html {font-size: 95%;}
+    :root{--blog-margin-inline: 2vw;
+    --content-margin-inline: 10vw;}
+}
+@media only screen and (max-width: 1200px) and (min-width: 992px) {
+    html {font-size: 95%;}
+    :root{--blog-margin-inline: 2vw;
+    --content-margin-inline: 15vw;}
+}
+@media only screen and (max-width: 1400px) and (min-width: 1200px) {
+    html {font-size: 100%;}
+    :root{--blog-margin-inline: 4vw;
+    --content-margin-inline: 15vw;}
+}
+@media only screen and (max-width: 1600px) and (min-width: 1400px) {
+    html {font-size: 100%;}
+    :root{--blog-margin-inline: 6vw;
+    --content-margin-inline: 15vw;}
+}
+@media only screen and (max-width: 1800px) and (min-width: 1600px) {
+    html {font-size: 100%;}
+    :root {--blog-margin-inline: 6vw;
+    --content-margin-inline: 20vw;}
+}
+@media only screen and (min-width: 1800px) {
+    html {font-size: 100%;}
+    :root {--blog-margin-inline: 8vw;
+    --content-margin-inline: 20vw;}
+}
+// Media queries for other stuff
+@media only screen and (max-width: 600px) {
+    .buttons-wrapper {scale: 0.8;}
+    .footer {margin: 1rem 0 5% 0 !important;}
+    :root {--gradient-width: 5%;}
+}
+@media only screen and (max-width: 768px) {
+    .image-wrapper {visibility: collapse;}
+}
+@media only screen and (max-width: 992px) {
+    .footer {margin: 1rem 3rem 5% 3rem !important;}
+    hr {width: 90% !important;}
+    nav {padding-inline: 2rem !important;}
+    :root {--gradient-width: 8.5%;}
+    .marginalia {display: none;}
+}
+@media only screen and (max-width: 1200px) {
+    .recentPosts > ul {flex-direction: column !important;}
+}
+
+@media only screen and (min-width: 1600px) {
+    :root {--gradient-width: 15%;}
+}
+
+*, *::before, *::after {box-sizing: border-box;}
+
+* {padding: 0; margin: 0;}
+
+.content {
+    margin-inline: var(--content-margin-inline);
+}
+
+.currentNav {
+    color: $acc-color-2 !important;
+}
+
+*:focus-visible{
+    outline: 0.18rem dotted $acc-color-2;
+    outline-offset: 0.35ch;
+}
+
+:disabled {
+	opacity: 0.8;
+	cursor: not-allowed;
+}
+
+body {
+    scrollbar-color: $edge-color transparent;
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $edge-color;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, html {
+    min-width: $min-width;
+    position: relative;
+}
+
+body, html, a {
+    cursor: url("../../assets/images/cursor.svg"), auto;
+}
+
+.dither-bg {
+    background-color: $page-color;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index:-1;
+}
+
+.dither-bg::before {
+    content: "";
+    position: fixed;
+    height: 100%;
+    inset: 0;
+    background-image: radial-gradient($edge-color 50%, transparent 50%);
+    background-size: 0.35rem 0.35rem;
+    $gradient: linear-gradient(
+        to right, 
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.15) var(--gradient-width) calc(100% - var(--gradient-width)),
+        rgba(0,0,0,1) 100%
+    );
+    -webkit-mask-image: $gradient;
+    mask-image: $gradient;
+    opacity: 0.3;
+}
+
+details {
+    summary {
+        list-style-position: outside;
+        font-family: $para-font;
+        font-size: 1rem;
+        color: $title-color;
+    }
+    summary::marker {
+        color: $acc-color-1;
+    }
+    p {
+        font-size: 0.85rem;
+        line-height: normal;
+        margin-block: 1ch;
+    }
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem 5rem 3rem;
+    height: 2rem;
+    .logo {
+        flex: 1;
+        img {
+            width: auto;
+            height: 3.75rem;
+        }
+    }
+    a {
+        font-size: 1.1rem;
+        font-family: $para-font;
+        font-weight: bold;
+    }
+    .rss {
+        img {
+            width: 1.3rem;
+            height: auto;
+        }
+        .rss-hover {display: none;}
+        .rss-static {display: block;}
+    }
+    .rss:hover {
+        .rss-hover {display: block;}
+        .rss-static {display: none;}
+    }
+}
+
+nav {
+    a, a:link, a:visited, a:active {
+        color: $title-color;
+    }
+    a:hover {
+        color: $acc-color-2;
+    }
+}
+
+.about, .recentPosts, .buttons-wrapper {
+    margin-bottom: 10rem;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+h1 {
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+h2 {
+    font-size: 1.5rem;  
+}
+h3 {
+    font-size: 1.3rem;
+}
+h4 {
+    font-size: 1.2rem;
+}
+h1, h2, h3, h4 {
+    font-family: $title-font, Georgia, serif;
+    clear: both;
+    font-weight: 300;
+    color: $title-color;
+    font-variant-numeric: lining-nums;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    margin-block: $heading-spacing;
+    line-height: 1.5;
+    + ul, + ol, + blockquote, + dl > dt, + table, + div:has(div > pre > code) {
+        margin-top: calc($para-spacing/2);
+    }
+    + p {
+        margin-top: calc($para-spacing/3);
+    }
+}
+
+h2 + h3, h2 + h4, h3 + h4 {
+    margin-top: calc($para-spacing*0.5);
+}
+
+h2 + h2, h3 + h3, h4 + h4, h3 + h2, h4 + h2, h4 + h3 {
+    margin-top: calc($para-spacing*1.5);
+}
+
+.dotted-underline-1, .dotted-underline-2 {
+    display: table;
+}
+
+.dotted-underline-1:after, .dotted-underline-2:after {
+    content: "";
+    display: table-caption;
+    caption-side: bottom;
+    position: relative;
+    margin-top:-0.35em;
+
+}
+
+.dotted-underline-1:after {border-bottom: 0.115em dotted $acc-color-1;}
+.dotted-underline-2:after {border-bottom: 0.115em dotted $acc-color-2;}
+
+.underline-1 {text-decoration: underline solid $acc-color-1 0.12em;}
+.underline-2 {text-decoration: underline solid $acc-color-2 0.12em;}
+
+p {
+    text-wrap: pretty;
+    font-variant-numeric: proportional-nums;
+    overflow-wrap: break-word;
+}
+
+p, ul, ol, blockquote, dt, table, div:has(div > pre > code), figure {
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: $para-font, $special-char-font, Arial, sans-serif;
+    margin-block: $para-spacing;
+    color: $para-color;
+}
+
+li > ol, li > ul {
+    margin-block: calc($para-spacing/2);
+}
+
+ul, ol {
+    list-style-position: inside;
+    margin-left: $quote-offset;
+    line-height: 1.5rem;
+    & > ::marker {
+        color: $acc-color-1;
+    }
+    li {   
+        p, h1, h2, h3, h4 {
+            margin-block: 0;
+        }
+        margin-block: calc($para-spacing/2);
+    }
+}
+
+ul ul ul > li {
+    &::marker {
+        content: "• ";
+    }
+    & ul > li::marker {
+        content: "◦ ";
+    }
+}
+
+ol {
+    counter-reset: item-no;
+}
+ol > li {
+    counter-increment: item-no;
+    &::marker {
+        content: counters(item-no, ".") ". ";
+        font-variant-numeric: oldstyle-nums;
+    }
+}
+
+
+blockquote {
+    margin-left: $quote-offset;
+    position: relative;
+    p {
+        color: $title-color;
+        font-style: italic;
+        margin-block: 0;
+    }
+}
+
+dl {
+    dt {
+        font-weight: bold;
+        color: $acc-color-2;
+        margin-bottom: -0.5rem;
+    }
+    dd {
+        margin-left: $quote-offset;
+        font-style: italic;
+        font-size: $alt-font-size;
+        line-height: $alt-line-height;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    margin-inline: auto;
+    font-variant-numeric: tabular-nums lining-nums slashed-zero;
+    background-color: $footnote-card-color;
+    font-size: $alt-font-size;
+    line-height: $alt-line-height;
+    border: 0.15em dotted $acc-color-1;
+    thead {
+        color: $acc-color-1;
+        background-color: $prim-color;
+    }
+    td, th {
+        padding: 0.4ch 4ch 0.4ch 1ch;
+        &:last-child {
+            padding: 0.4ch 1ch 0.4ch 1ch;
+        }
+    }
+}
+
+a, a:link, a:visited, a:active {
+    color: $acc-color-1;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $acc-color-2;
+}
+
+a[rel*="external"]:not(.no-indicator)::after {
+    content: "↗";
+    font-family: $special-char-font;
+    font-size: 0.8em;
+    position: relative;
+    bottom: 0.55em;
+    left: 0.1ch;
+    line-height: 0;
+}
+
+.marginalia {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.accent-1 {
+    color: $acc-color-1;
+}
+
+.accent-2 {
+    color: $acc-color-2;
+}
+
+.vertical-list, .grid-list {
+    display: flex;
+    gap: 1.25rem;
+
+    list-style: none;
+    margin: 1rem 0;
+    li {
+        position: relative;
+        padding: 1.25rem 1rem 1rem 1rem;
+        background-color: $prim-color;
+        border-radius: $card-radius;
+        min-height: 10rem;
+        overflow: hidden;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 0;
+
+        h2 {
+            margin-bottom: 2.25rem;
+        }
+        h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: $alt-font-size;
+            line-height: $alt-line-height;
+        }
+    }
+
+    li:hover {
+        background: $page-color;
+        box-shadow: -1px -1px 4px $acc-color-2, 2px 2px 4px $acc-color-1;
+    }
+}
+
+.vertical-list {
+    flex-direction: column;
+}
+
+.grid-list {
+    flex-direction: row;
+}
+
+.posts-header {
+    min-width: var(--blog-min-width);
+    margin-inline: var(--blog-margin-inline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #search-container {
+        display: flex;
+        justify-self: flex-end;
+        height: 2.5rem;
+        gap: 2ch;
+        #search-input, #ddg-search-box {
+            padding-left: 2ch;
+            background-color: $prim-color;
+            border-radius: $card-radius;
+            font-family: $para-font;
+            color: $title-color;
+            font-size: 1rem;
+            border: 0.1rem dotted $acc-color-1;
+            box-shadow: 1px 1px 1px $acc-color-1;
+        }
+        #search-input:focus, #ddg-search-box:focus {
+            outline: none;
+            border: 0.1rem dotted $acc-color-2;
+            box-shadow: 1px 1px 1px $acc-color-2;
+        }
+
+        #ddg-search {
+            display: flex;
+            gap: 1ch;
+            .ddg-logo {
+                height: 100%;
+                width: auto;
+            }
+            #ddg-search-box {
+                height: 100%;
+            }
+        }
+        #search-input {
+            display: none;
+        }
+    }
+}
+
+#results-container {
+    margin-inline: var(--blog-margin-inline);
+}
+
+#results-container > li {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3rem;
+
+    .post-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .post-excerpt {
+            flex: 1;
+        }
+    }
+
+    .image-wrapper {
+        flex: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img {
+            border-radius: $card-radius;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.post-wrapper {
+    display: inline-block;
+    height: fit-content;
+    padding-right: 1rem;
+}
+
+.buttons-wrapper {
+    margin-top: 12rem;
+    display: flex;
+    justify-content: center;
+    .buttons {
+        display: grid;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        border-radius: $card-radius;
+
+        outline: 0.2rem dotted $acc-color-2;
+        img {
+            image-rendering: pixelated;
+        }
+    }
+}
+
+::selection, ::-moz-selection, ::-webkit-selection {
+  background-color: $acc-color-1;
+  color: $page-color;
+}
+
+hr {
+    border: none;
+    margin-top: 6rem;
+    width: 80%;
+    display: block;
+    border-top: 0.2rem dotted $edge-color;
+    margin-inline: auto;
+}
+
+footer {
+    margin: 2rem 15% 2rem 15%;
+    display: flex;
+    justify-content: space-between;
+    img {
+        width: 10rem;
+        height: auto;
+    }
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: $para-font;
+    font-size: 0.8rem;
+    justify-content: space-between;
+    .links {
+        display: grid;
+        gap: 0.75rem;
+        grid-template-columns: repeat(3 , 1fr);
+        width: fit-content;
+        justify-items: center;
+        font-size: 0.95rem;
+    }
+}
+
+.fleuron {
+    margin: 5rem 0 5rem 0;
+    text-align: center;
+    img {
+        height: 1.75rem;
+        width: auto;
+    }
+    font-size: 1.9rem;
+    color: $acc-color-1;
+
+}
+
+.blog-post-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .confidence {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1ch;
+        img {
+            width: 1rem;
+            height: auto;
+        }
+    }
+
+    .reading-time {
+        text-align: end;
+    }
+}
+
+.blog-post-info > * {
+    flex: 1;
+}
+
+.blog-post-content {
+    margin-inline: var(--blog-margin-inline);
+    hr {
+        width: 60%;
+        border-color: $acc-color-2;
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+    figure {
+        width: fit-content;
+        line-height: 0;
+        figcaption {
+            font-size: $alt-font-size;
+            line-height: $alt-line-height;
+            font-style: italic;
+            text-align: center;
+        }
+    }
+    .glow > img {
+        border-radius: $card-radius;
+        box-shadow: 0 8px 20px -5px rgba($acc-color-1, 0.45), 0 15px 45px -2px rgba($acc-color-1, 0.3);     
+    }
+    .center {margin-inline: auto;}
+    .right {margin-left: auto;}
+    .left {margin-right: auto;}
+    .inline-left {
+        float: inline-start;    
+        margin-right: 1.25rem;
+        margin-block: 0;
+        + p {margin-top: 0;}
+    }
+    .inline-right {
+        float: inline-end;
+        margin-left: 1.25rem;
+        margin-block: 0;
+        + p {margin-top: 0;}
+    }
+    p:has(+figure.inline-left), p:has(+figure.inline-right) {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.footnote {
+    padding: 0 0.15ch 0 0.4ch;
+}
+
+sup, sub {
+    line-height: 0;
+}
+
+ins, .underline-1, .underline-2, del {
+    a[rel*="external"]:not(.no-indicator)::after, sup:has(.footnote) {
+        display: inline-block;
+        text-decoration: none;
+    }
+}
+
+sup[id^="fnref:"]:target {
+    scroll-margin-top: 15rem;
+    .footnote {
+        animation: footnote-text-flash 1s;
+        animation: footnote-bg-flash 1s;
+    }
+}
+
+li[id^="fn:"]:target {
+    .reversefootnote {
+        animation: footnote-text-flash 1s;
+        animation: footnote-bg-flash 1s;
+    }
+}
+
+@keyframes footnote-bg-flash {
+    from {background-color: $acc-color-1;}
+    to {background-color: transparent;}
+}
+
+@keyframes footnote-text-flash {
+    from {color: $page-color;}
+    to {color: $acc-color-1;}
+}
+
+.footnotes {
+    margin: 2rem 0 5rem 0;
+    font-family: $para-font;
+    counter-reset: item-no; 
+    ol {
+        list-style-position: outside;
+        & li::marker {
+            content: counter(item-no) ". ";
+        }
+    }
+}
+
+blockquote::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: -$quote-offset;
+    border-left: 0.2em solid $acc-color-1;
+    border-radius: $card-radius;
+}
+
+.footnote-card {
+    position: absolute;
+    border-radius: 0.5rem;
+    background: $footnote-card-color;
+    padding: 1ch 1.5ch 1ch 1.5ch;
+    z-index: 9999;
+    width: fit-content;
+    max-width: 15%;
+
+    font-family: $para-font;
+    font-size: 0.75rem;
+    line-height: $line-height * 0.7;
+    color: $para-color;
+    border: 1px dotted $acc-color-2;
+    box-shadow: 1px 1px 1px $acc-color-2;
+}
+
+.invis-card-link {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.small-caps, abbr {
+    font-variant-caps: all-small-caps;
+}
+
+.denominator {
+    font-feature-settings: "nalt" on;
+}
+
+.fraction {
+    font-variant-numeric: diagonal-fractions;
+}
+
+code {
+    background-color: $prim-color;
+    font-family: $code-font, monospace;
+    font-feature-settings:  "cv02", "ss01", "ss02", "ss04", "ss08", "zero";
+}
+
+pre:has(code) {
+    background-color: $footnote-card-color;
+    border: 0.2rem dotted $acc-color-1;
+    padding: 2ch;
+    code {
+        background-color: transparent;
+    }
+    overflow-x: scroll;
+    font-size: $alt-font-size;
+    line-height: $alt-line-height;
+}

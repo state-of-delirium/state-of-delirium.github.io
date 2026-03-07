@@ -1,0 +1,14 @@
+<div class="confidence">
+    {% if page.confidence == "high" %}
+        <p>Lucid</p>
+        <img src="{{site.baseurl}}/assets/images/lucid.svg" alt="LIVID">
+    {% endif %}
+    {% if page.confidence == "med" %}
+        <p>Scrutable</p>
+        <img src="{{site.baseurl}}/assets/images/scrutable.svg" alt="SCRUTABLE">
+    {% endif %}
+    {% if page.confidence == "low" %}
+        <p>Delirious</p>
+        <img src="{{site.baseurl}}/assets/images/delirious.svg" alt="DELIRIOUS">
+    {% endif %}
+</div>
