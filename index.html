@@ -8,13 +8,22 @@ permalink: "/"
 
 <section class="about">
     <h1><span class="dotted-underline-1">About This Site</span></h1>
-    <p>This website is a weird brainchild of Vishnu and Pratham, a place to pen down our thoughts and ideas. It's still under construction and we hope to add much more IndieWeb-y things.
+    <p>This website is a weird brainchild of Pratham and Vishnu, a place to pen down our thoughts and ideas. It's still under construction and we hope to add much more IndieWeb-y components.
+    </p>
+    <p>
+    Each post is also tagged with a metric that reflects our state of mind while writing it: Delirious, Nebulous, and Lucid.
+    In more detail,
+    <ul>
+        <li>Delirious — barely conscious chaotic ramblings</li>
+        <li>Nebulous — coherent but hazy and abstract</li>
+        <li>Lucid — work you <i>better</i> feel smarter by reading</li>
+    </ul>
     </p>
 </section>
 
 <section class="recentPosts">
     <h3><i><span class="accent-2">Recent Posts</span></i></h3>
-    <ul class="vertical-list">
+    <ul class="grid-list">
         {% for post in site.posts limit: 3 %}
         <li>
             <h3>{{ post.title }}</h3>
