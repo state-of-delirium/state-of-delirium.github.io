@@ -15,7 +15,7 @@ show_footer: true
   {% for post in site.posts %}
   <li>
     <div class="post-text">
-      <h2><span class="dotted-underline-2">{{ post.title }}</span></h2>
+      <h2>{{ post.title }}</h2>
       <p class="post-excerpt">{{ post.excerpt }}</p>
       <p><i>{{ post.date | date_to_string }}</i></p>
     </div>

@@ -10,15 +10,12 @@ defaults:
       layout: "posts"
       permalink: "/blog/:title"
       thumb: 
-        src: "https://state-of-delirium.github.io/assets/images/thumb-missing.webp"
+        src: "/assets/images/thumb-missing.webp"
         height: "500"
         width: "500"
 
-collections:
-  authors:
-    output: true
-
-url: "state-of-delirium.github.io"
+url: "https://state-of-delirium.github.io"
+baseurl: ""
 
 plugins:
   - jekyll-feed
@@ -27,8 +24,8 @@ plugins:
   - jekyll-minifier
 
 feed:
-  icon: "state-of-delirium.github.io/assets/images/favicon.svg"
-  logo: "state-of-delirium.github.io/assets/images/favicon.svg"
+  icon: "/assets/images/favicon.svg"
+  logo: "/assets/images/favicon.svg"
 
 target-blank:
   rel: external
