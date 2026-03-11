@@ -107,28 +107,38 @@
 }
 @media only screen and (max-width: 1200px) and (min-width: 992px) {
     html {font-size: 95%;}
-    :root{--blog-margin-inline: 2vw;
+    :root{--blog-margin-inline: 4vw;
     --content-margin-inline: 15vw;}
 }
 @media only screen and (max-width: 1400px) and (min-width: 1200px) {
     html {font-size: 100%;}
-    :root{--blog-margin-inline: 4vw;
+    :root{--blog-margin-inline: 6vw;
     --content-margin-inline: 15vw;}
 }
 @media only screen and (max-width: 1600px) and (min-width: 1400px) {
     html {font-size: 100%;}
     :root{--blog-margin-inline: 6vw;
-    --content-margin-inline: 15vw;}
+    --content-margin-inline: 17.5vw;}
 }
 @media only screen and (max-width: 1800px) and (min-width: 1600px) {
     html {font-size: 100%;}
     :root {--blog-margin-inline: 6vw;
     --content-margin-inline: 20vw;}
 }
-@media only screen and (min-width: 1800px) {
+@media only screen and (max-width: 2500px) and (min-width: 1800px) {
     html {font-size: 100%;}
     :root {--blog-margin-inline: 8vw;
     --content-margin-inline: 20vw;}
+}
+@media only screen and (max-width: 3800px) and (min-width: 2500px) {
+    html {font-size: 150%;}
+    :root {--blog-margin-inline: 8vw;
+    --content-margin-inline: 22vw;}
+}
+@media only screen and (min-width: 3800px) {
+    html {font-size: 225%;}
+    :root {--blog-margin-inline: 10vw;
+    --content-margin-inline: 22vw;}
 }
 // Media queries for other stuff
 @media only screen and (min-width: 1600px) {
@@ -154,6 +164,10 @@
         }
     }
     .blog-post-info {font-size: $alt-font-size; line-height: $alt-line-height;}
+    .links {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+    }
 }
 @media only screen and (max-width: 600px) {
     .buttons-wrapper {scale: 0.8;}
@@ -167,8 +181,15 @@
     :root {--gradient-width: 5%;}
     .blog-post-info {flex-direction: column !important;}
     nav {padding-inline: 1rem !important;}
+    .links {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(4, 1fr) !important;
+        scale: 0.9;
+    }
 }
-
+@media only screen and (max-width: 400px) {
+    .footer{scale: 0.85;}
+}
 *, *::before, *::after {box-sizing: border-box;}
 
 * {padding: 0; margin: 0;}
@@ -214,6 +235,8 @@ html {
 body, html {
     min-width: $min-width;
     position: relative;
+    background-color: $page-color;
+    z-index: -1;
 }
 
 body, html, a {
@@ -223,8 +246,8 @@ body, html, a {
 .dither-bg {
     background-color: $page-color;
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     z-index:-1;
 }
@@ -232,15 +255,15 @@ body, html, a {
 .dither-bg::before {
     content: "";
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     inset: 0;
     background-image: radial-gradient($edge-color 50%, transparent 50%);
     background-size: 0.35rem 0.35rem;
     $gradient: linear-gradient(
         to right, 
         rgba(0,0,0,1) 0%,
-        rgba(0,0,0,0.15) var(--gradient-width) calc(100% - var(--gradient-width)),
+        rgba(0,0,0,0.2) var(--gradient-width) calc(100% - var(--gradient-width)),
         rgba(0,0,0,1) 100%
     );
     -webkit-mask-image: $gradient;
@@ -325,10 +348,10 @@ h2 {
     font-size: 1.6rem;  
 }
 h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 h4 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 h1, h2, h3, h4 {
     font-family: $title-font, Georgia, serif;
@@ -689,13 +712,16 @@ footer {
     font-size: 0.8rem;
     justify-content: space-between;
     margin-block: 0.15rem;
+    gap: 1rem;
     .links {
         display: grid;
-        gap: 1.75rem;
+        column-gap: 1.75rem;
+        row-gap: 0.5rem;
         grid-template-columns: repeat(4, 1fr);
         text-align: center;
         width: min-content;
-        font-size: 0.9rem;
+        font-size: $alt-font-size;
+        line-height: $alt-line-height;
         white-space: nowrap;
     }
 }
