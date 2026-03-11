@@ -3,8 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="msvalidate.01" content="993ECE77313727C6D6519F5ADA9B062E" />  
-    <title>{{ page.title }} - {{ site.title }}</title>
+    <meta name="msvalidate.01" content="993ECE77313727C6D6519F5ADA9B062E" />
+
+    {% if page.title == "Home" %}
+      <title>State of Delirium</title>
+      <meta property="og:title" content="State of Delirium">
+    {% else %}
+      <title>{{ page.title }} - {{ site.title }}</title>
+      <meta property="og:title" content="{{ page.title }}">
+    {% endif %}
+
+    {% if page.description %}
+      <meta name="description" content="{{ page.description }}">
+      <meta property="og:description" content="{{ page.description }}">
+    {% elsif page.excerpt %}
+      <meta name="description" content="{{ page.excerpt }}">
+      <meta property="og:description" content="{{ page.excerpt }}">
+    {% endif %}
+
+    <meta property="og:url" content="{{ page.url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://state-of-delirium.github.io/assets/images/ogimage.webp">
+
     <link rel="preload" href="{{site.baseurl}}/assets/fonts/merriweather.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{site.baseurl}}/assets/fonts/worksans.woff2" as="font" type="font/woff2" crossorigin>
 

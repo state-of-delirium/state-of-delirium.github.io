@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+    if (touch_enabled()) {return;}
+
     const footnotes = document.querySelectorAll(".footnote");
     footnotes.forEach(link => {
     link.addEventListener("mouseover", function(event) {
@@ -46,3 +48,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   })
 });
+
+function touch_enabled() {
+    return ( 'ontouchstart' in window ) || 
+           ( navigator.maxTouchPoints > 0 ) || 
+           ( navigator.msMaxTouchPoints > 0 );
+}

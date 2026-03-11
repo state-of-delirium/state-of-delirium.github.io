@@ -5,7 +5,7 @@ layout: default
 <h1><span class="dotted-underline-2">{{ page.title }}</span></h1>
 
 <section class="blog-post-info">
-    <p><i>{{ page.date | date_to_string }}{% if page.edited %} / {{ page.edited | date_to_string }}{% endif %}</i></p>
+    <p><i>{{ page.date | date: "%-d %b %y" }}{% if page.edited %} / {{ page.edited | date: "%-d %b %y" }}{% endif %}</i></p>
     <p>{{ page.author }}</p>
     {% if page.confidence %}
         {% include confidence.html %}
