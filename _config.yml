@@ -22,6 +22,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-minifier
+  - nokogiri
 
 feed:
   icon: "/assets/images/favicon.svg"
@@ -34,8 +35,9 @@ sass:
   style: compressed
 
 jekyll-minifier:
-  exclude: "feed.xml"
-  exclude: "*.css"
+  exclude: 
+    - "feed.xml"
+    - "*.css"
 
 markdown: kramdown
 highlighter: rouge
