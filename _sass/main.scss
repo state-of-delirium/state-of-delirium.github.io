@@ -153,6 +153,7 @@
     nav {padding-inline: 2rem !important;}
     :root {--gradient-width: 8.5%;}
     .marginalia {display: none;}
+    .toc {display: none !important;}
 }
 @media only screen and (max-width: 768px) {
     .image-wrapper {visibility: collapse;}
@@ -192,7 +193,7 @@
 }
 *, *::before, *::after {box-sizing: border-box;}
 
-* {padding: 0; margin: 0;}
+* {padding: 0; margin: 0; scroll-margin-top: 10rem;}
 
 .content {
     margin-inline: var(--content-margin-inline);
@@ -763,6 +764,7 @@ footer {
 }
 
 .blog-post-content {
+    position: relative;
     margin-inline: var(--blog-margin-inline);
     hr {
         width: 60%;
@@ -804,6 +806,41 @@ footer {
     }
 }
 
+.toc {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    overflow-wrap: break-word;
+    width: calc((var(--blog-margin-inline) + var(--content-margin-inline))*0.7);
+    right: calc((var(--blog-margin-inline) + var(--content-margin-inline))*-.82);
+    background-color: $footnote-card-color;
+    > li {
+        position: relative;
+        font-size: 1.15rem;
+        font-variant-numeric: lining-nums;
+        color: $title-color;
+        margin: 0;
+        border: 2px dotted $edge-color;
+        padding: .9ch .5ch .9ch .7ch;
+    }
+    li+li {
+        border-top: none;
+    }
+    li:has(+li:hover){
+        border-bottom: none;
+    }
+    li+li:hover {
+        border-top: 2px dotted $edge-color;
+    }
+    li:hover {
+        background-color: $page-color;
+        box-shadow: 0 0 10px -2px $edge-color;
+    }
+}
+
+
 .footnote {
     padding: 0 0.15ch 0 0.4ch;
 }
@@ -820,7 +857,6 @@ ins, .underline-1, .underline-2, del {
 }
 
 sup[id^="fnref:"]:target {
-    scroll-margin-top: 15rem;
     .footnote {
         animation: footnote-text-flash 1s;
         animation: footnote-bg-flash 1s;
