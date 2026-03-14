@@ -21,7 +21,7 @@ group :jekyll_plugins do
   gem "jekyll-minifier", "~> 0.2"
   gem "kramdown", "~> 2.5"
   gem "rouge", "~> 4.7"
-  gem "nokogiri", "~> 1.19"
+  gem "nokogiri", "~> 1.18"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
