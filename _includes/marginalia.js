@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     shuffle(posRots);
     shuffle(negRots);
 
-    const pageHeight = document.body.scrollHeight;
-    const maxNotes = Math.min(thoughts.length, Math.floor(pageHeight / vh(35)), 2*posRots.length); 
+    const density = 2;
+    const maxNotes = Math.min(thoughts.length, Math.floor((document.body.scrollHeight / window.innerHeight) * density), 2*posRots.length); 
     
     const placedNotes = [];
     const minDistance = 10;
@@ -78,9 +78,4 @@ function shuffle(array) {
         [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
-}
-
-function vh(percent) {
-  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  return (percent * h) / 100;
 }

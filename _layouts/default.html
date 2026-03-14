@@ -3,30 +3,41 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="text-scale" content="scale" />
     <meta name="msvalidate.01" content="993ECE77313727C6D6519F5ADA9B062E" />
 
     {% if page.title == "Home" %}
       <title>State of Delirium</title>
       <meta property="og:title" content="State of Delirium">
+      <meta name="twitter:title" content="State of Delirium">
     {% else %}
       <title>{{ page.title }} - {{ site.title }}</title>
       <meta property="og:title" content="{{ page.title }}">
+      <meta name="twitter:title" content="{{ page.title }}">
     {% endif %}
 
     {% if page.description %}
       <meta name="description" content="{{ page.description }}">
       <meta property="og:description" content="{{ page.description }}">
+      <meta name="twitter:description" content="{{ page.description }}">
     {% elsif page.excerpt %}
       <meta name="description" content="{{ page.excerpt }}">
       <meta property="og:description" content="{{ page.excerpt }}">
+      <meta name="twitter:description" content="{{ page.excerpt }}">
     {% endif %}
 
     <meta property="og:url" content="{{ page.url }}">
-    <meta property="og:type" content="website">
     <meta property="og:image" content="https://state-of-delirium.github.io/assets/images/ogimage.webp">
+    <meta property="og:type" content="website">
+
+    <meta property="twitter:url" content="{{ page.url }}">
+    <meta name="twitter:image" content="https://state-of-delirium.github.io/assets/images/ogimage.webp">
+    <meta property="twitter:domain" content="state-of-delirium.github.io">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preload" href="{{site.baseurl}}/assets/fonts/merriweather.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{site.baseurl}}/assets/fonts/worksans.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{site.baseurl}}/assets/fonts/worksans-italic.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/styles.css">
     <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/highlighting.css">

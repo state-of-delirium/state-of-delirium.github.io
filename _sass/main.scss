@@ -763,6 +763,7 @@ footer {
 }
 
 .blog-post-content {
+    position: relative;
     margin-inline: var(--blog-margin-inline);
     hr {
         width: 60%;
@@ -803,6 +804,30 @@ footer {
         margin-bottom: 0.5rem;
     }
 }
+
+.toc {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    outline: solid black;
+    word-wrap: break-word;
+    padding-left: 1ch;
+    width: clamp(min-content, fit-content, 30%);
+    left: -35%;
+    > li {
+        font-size: 1.2rem;
+        color: $title-color;
+        outline: solid red;
+        margin: 0;
+        padding-block: 1ch;
+    }
+    li:nth-child(odd) {
+        background-color: $footnote-card-color;
+    }
+}
+
 
 .footnote {
     padding: 0 0.15ch 0 0.4ch;
