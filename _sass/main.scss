@@ -167,7 +167,6 @@
     .blog-post-info {font-size: $alt-font-size; line-height: $alt-line-height;}
     .links {
         grid-template-columns: repeat(2, 1fr) !important;
-        grid-template-rows: repeat(2, 1fr) !important;
     }
 }
 @media only screen and (max-width: 600px) {
@@ -178,18 +177,16 @@
             padding: .4ch .4ch .4ch 0.5ch !important;
         }
     }
-    .footer {margin: 1rem 11.5rem 5% 1.5rem !important;}
+    .footer {margin: 1rem 1.5rem 5% 1.5rem !important;}
     :root {--gradient-width: 5%;}
     .blog-post-info {flex-direction: column !important;}
     nav {padding-inline: 1rem !important;}
     .links {
         grid-template-columns: 1fr !important;
-        grid-template-rows: repeat(4, 1fr) !important;
-        scale: 0.9;
     }
 }
 @media only screen and (max-width: 400px) {
-    .footer{scale: 0.85;}
+    .footer{scale: .95;}
 }
 *, *::before, *::after {box-sizing: border-box;}
 
@@ -332,7 +329,7 @@ nav {
 }
 
 .about, .recentPosts, .buttons-wrapper {
-    margin-bottom: 8rem;
+    margin-bottom: 7rem;
 }
 
 .about > h1 {
@@ -495,7 +492,7 @@ a:hover {
     color: $acc-color-2;
 }
 
-a[rel*="external"]:not(.no-indicator)::after {
+.external-link:not(.no-indicator)::after {
     content: "↗";
     font-family: $para-font;
     font-size: 0.8em;
@@ -715,15 +712,18 @@ footer {
     margin-block: 0.15rem;
     gap: 1rem;
     .links {
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
         column-gap: 1.75rem;
         row-gap: 0.5rem;
-        grid-template-columns: repeat(4, 1fr);
+        justify-content:space-around;
         text-align: center;
-        width: min-content;
         font-size: $alt-font-size;
         line-height: $alt-line-height;
         white-space: nowrap;
+        .webring {
+            display: inline-block;
+        }
     }
 }
 
@@ -816,27 +816,34 @@ footer {
     width: calc((var(--blog-margin-inline) + var(--content-margin-inline))*0.7);
     right: calc((var(--blog-margin-inline) + var(--content-margin-inline))*-.82);
     background-color: $footnote-card-color;
-    > li {
+    li {
         position: relative;
         font-size: 1.15rem;
         font-variant-numeric: lining-nums;
         color: $title-color;
         margin: 0;
         border: 2px dotted $edge-color;
-        padding: .9ch .5ch .9ch .7ch;
+        padding: .9ch .5ch .9ch .75ch;
+        &+li {border-top: none;}
+        &:has(+li:hover) {border-bottom: none;}
+        &+li:hover {border-top: 2px dotted $edge-color;}
+        &:hover {
+            background-color: $page-color;
+            box-shadow: 0 0 10px -2px $edge-color;
+        }
     }
-    li+li {
-        border-top: none;
-    }
-    li:has(+li:hover){
-        border-bottom: none;
-    }
-    li+li:hover {
-        border-top: 2px dotted $edge-color;
-    }
-    li:hover {
-        background-color: $page-color;
-        box-shadow: 0 0 10px -2px $edge-color;
+    
+    .toc-heading {
+        text-align: center;
+        border: 2px dotted $acc-color-2;
+        color: $acc-color-2;
+        font-family: $title-font;
+        background-color: $prim-color;
+        padding-inline: 0;
+        &:hover {
+            background-color: $prim-color;
+            box-shadow: none;
+        }
     }
 }
 
@@ -850,7 +857,7 @@ sup, sub {
 }
 
 ins, .underline-1, .underline-2, del {
-    a[rel*="external"]:not(.no-indicator)::after, sup:has(.footnote) {
+    .external-link:not(.no-indicator)::after, sup:has(.footnote) {
         display: inline-block;
         text-decoration: none;
     }

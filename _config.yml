@@ -29,7 +29,7 @@ feed:
   logo: "/assets/images/favicon.svg"
 
 target-blank:
-  rel: external
+  add_css_classes: external-link
 
 sass:
   style: compressed
