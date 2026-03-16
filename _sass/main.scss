@@ -693,7 +693,7 @@ hr {
 }
 
 footer {
-    margin: 1.5rem 15% 2rem 15%;
+    margin: 1rem 15% 2rem 15%;
     display: flex;
     justify-content: space-between;
     img {
@@ -723,10 +723,14 @@ footer {
         white-space: nowrap;
         .webring {
             display: inline-block;
+            background-color: $prim-color;
+            border-radius: $card-radius;
+            a:first-child, a:last-child {
+                padding-inline: .5ch;
+            }
         }
     }
 }
-
 .fleuron {
     margin: 5rem 0 5rem 0;
     text-align: center;

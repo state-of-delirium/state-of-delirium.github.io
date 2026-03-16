@@ -17,7 +17,6 @@ gem "minima", "~> 2.5.2"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.17"
   gem "jekyll-sitemap", "~> 1.4"
-  gem "jekyll-target-blank", "~> 2.0"
   gem "jekyll-minifier", "~> 0.2"
   gem "kramdown", "~> 2.5"
   gem "rouge", "~> 4.7"
