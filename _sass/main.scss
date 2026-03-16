@@ -346,10 +346,10 @@ h2 {
     font-size: 1.6rem;  
 }
 h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 h4 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 h1, h2, h3, h4 {
     font-family: $title-font, Georgia, serif;
@@ -495,10 +495,9 @@ a:hover {
 .external-link:not(.no-indicator)::after {
     content: "↗";
     font-family: $para-font;
-    font-size: 0.8em;
+    font-size: .8em;
     position: relative;
-    bottom: 0.55em;
-    left: 0.1ch;
+    padding-inline: 0.2ch;
     line-height: 0;
 }
 
@@ -777,8 +776,8 @@ footer {
         margin-bottom: 2.5rem;
     }
     figure {
-        width: fit-content;
         line-height: 0;
+        width: min-content;
         figcaption {
             font-size: $alt-font-size;
             line-height: $alt-line-height;
@@ -920,6 +919,7 @@ blockquote::before {
     z-index: 9999;
     width: fit-content;
     max-width: 15%;
+    text-wrap: pretty;
 
     font-family: $para-font;
     font-size: 0.75rem;
@@ -951,6 +951,7 @@ code {
     background-color: $prim-color;
     font-family: $code-font, monospace;
     font-feature-settings:  "cv02", "ss01", "ss02", "ss04", "ss08", "zero";
+    font-size: $alt-font-size;
 }
 
 pre:has(code) {
