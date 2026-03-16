@@ -20,16 +20,12 @@ baseurl: ""
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-target-blank
   - jekyll-minifier
   - nokogiri
 
 feed:
   icon: "/assets/images/favicon.svg"
   logo: "/assets/images/favicon.svg"
-
-target-blank:
-  rel: external
 
 sass:
   style: compressed
