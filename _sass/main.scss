@@ -6,6 +6,108 @@
     --gradient-width: 10%;
 }
 
+// Theme toggling stuff, this was annoying
+[data-theme="light"] {
+    --prim-color: #e4dddd !important;
+    --page-color: #EFE9E3 !important;
+    --edge-color: #c2a385 !important;
+    --footnote-card-color: #e9e4dd !important;
+
+    --title-color: #3b342e !important;
+    --para-color: #121111 !important;
+
+    .dither-bg::before {
+        opacity: 0.3 !important; 
+    }
+    .rss {
+        .rss-static {display: block !important;}
+        .rss-static-dark {display: none !important;}
+    }
+    .rss:hover {
+        .rss-static {display: none !important;}
+    }
+    ::selection, ::-moz-selection, ::-webkit-selection {
+        color: var(--page-color) !important;
+    }
+}
+
+[data-theme="dark"] {
+    --prim-color: #3b383b !important;
+    --page-color: #2c292c !important;
+    --edge-color: #6e5d47 !important;
+    --footnote-card-color: #363336 !important;
+
+    --title-color: #d1cccc !important;
+    --para-color: #e6ded8 !important;
+    
+    .dither-bg::before {
+        opacity: 0.2 !important; 
+    }
+    .rss {
+        .rss-static {display: none !important;}
+        .rss-static-dark {display: block !important;}
+    }
+    .rss:hover {
+        .rss-static-dark {display: none !important;}
+    }
+    ::selection, ::-moz-selection, ::-webkit-selection {
+        color: inherit !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --prim-color: #3b383b;
+        --page-color: #2c292c;
+        --edge-color: #6e5d47;
+        --footnote-card-color: #363336;
+
+        --title-color: #d1cccc;
+        --para-color: #e6ded8;
+    }
+
+    .dither-bg::before {
+        opacity: 0.2; 
+    }
+    .rss {
+        .rss-static {display: none;}
+        .rss-static-dark {display: block;}
+    }
+    .rss:hover {
+        .rss-static-dark {display: none;}
+    }
+
+    ::selection, ::-moz-selection, ::-webkit-selection {
+        color: inherit;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --prim-color: #e4dddd;
+        --page-color: #EFE9E3;
+        --edge-color: #c2a385;
+        --footnote-card-color: #e9e4dd;
+
+        --title-color: #3b342e;
+        --para-color: #121111;
+    }
+
+    .dither-bg::before {
+        opacity: 0.3; 
+    }
+    .rss {
+        .rss-static {display: block;}
+        .rss-static-dark {display: none;}
+    }
+    .rss:hover {
+        .rss-static {display: none;}
+    }
+    ::selection, ::-moz-selection, ::-webkit-selection {
+        color: var(--page-color);
+    }
+}
+
 // Fonts
 /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 @font-face {
@@ -91,12 +193,12 @@
 
 // Media queries for margins/text
 @media only screen and (max-width: 600px) { 
-    html { font-size: 90%;}
-    :root{--blog-margin-inline: 1vw;
-    --content-margin-inline: 6vw;}
+    html { font-size: 95%;}
+    :root{--blog-margin-inline: 0vw;
+    --content-margin-inline: 3vw;}
 }
 @media only screen and (max-width: 768px) and (min-width: 600px) { 
-    html { font-size: 90%;}
+    html { font-size: 95%;}
     :root{--blog-margin-inline: 2vw;
     --content-margin-inline: 10vw;}
 }
@@ -180,7 +282,7 @@
     .footer {margin: 1rem 1.5rem 5% 1.5rem !important;}
     :root {--gradient-width: 5%;}
     .blog-post-info {flex-direction: column !important;}
-    nav {padding-inline: 1rem !important;}
+    nav {padding-inline: 1rem !important; gap: 2rem !important;}
     .links {
         grid-template-columns: 1fr !important;
     }
@@ -211,13 +313,13 @@
 }
 
 body {
-    scrollbar-color: $edge-color transparent;
+    scrollbar-color: var(--edge-color) transparent;
     &::-webkit-scrollbar {
         width: 10px;
         height: 10px;
     }
     &::-webkit-scrollbar-thumb {
-        background: $edge-color;
+        background: var(--edge-color);
     }
     &::-webkit-scrollbar-track {
         background: transparent;
@@ -233,16 +335,16 @@ html {
 body, html {
     min-width: $min-width;
     position: relative;
-    background-color: $page-color;
+    background-color: var(--page-color);
     z-index: -1;
 }
 
-body, html, a {
+body, html, a, button {
     cursor: url("../../assets/images/cursor.svg"), auto;
 }
 
 .dither-bg {
-    background-color: $page-color;
+    background-color: var(--page-color);
     position: fixed;
     height: 100%;
     width: 100%;
@@ -256,7 +358,7 @@ body, html, a {
     height: 100%;
     width: 100%;
     inset: 0;
-    background-image: radial-gradient($edge-color 50%, transparent 50%);
+    background-image: radial-gradient(var(--edge-color) 50%, transparent 50%);
     background-size: 0.35rem 0.35rem;
     $gradient: linear-gradient(
         to right, 
@@ -266,7 +368,6 @@ body, html, a {
     );
     -webkit-mask-image: $gradient;
     mask-image: $gradient;
-    opacity: 0.3;
 }
 
 details {
@@ -274,7 +375,7 @@ details {
         list-style-position: outside;
         font-family: $para-font;
         font-size: 1rem;
-        color: $title-color;
+        color: var(--title-color);
     }
     summary::marker {
         color: $acc-color-1;
@@ -311,17 +412,23 @@ nav {
             height: auto;
         }
         .rss-hover {display: none;}
-        .rss-static {display: block;}
     }
     .rss:hover {
         .rss-hover {display: block;}
-        .rss-static {display: none;}
+    }
+    #theme-toggle {
+        background-color: transparent;
+        color: var(--title-color);
+        font-size: 1.1rem;
+        font-family: $para-font;
+        font-weight: bold;
+        border: none;
     }
 }
 
 nav {
     a, a:link, a:visited, a:active {
-        color: $title-color;
+        color: var(--title-color);
     }
     a:hover {
         color: $acc-color-2;
@@ -355,7 +462,7 @@ h1, h2, h3, h4 {
     font-family: $title-font, Georgia, serif;
     clear: both;
     font-weight: 300;
-    color: $title-color;
+    color: var(--title-color);
     font-variant-numeric: lining-nums;
     overflow-wrap: break-word;
     text-wrap: balance;
@@ -376,7 +483,7 @@ h2 + h2, h3 + h3, h4 + h4, h3 + h2, h4 + h2, h4 + h3 {
 
 .dotted-underline-1 {text-decoration: underline dotted $acc-color-1 0.15em;}
 .dotted-underline-2 {text-decoration: underline dotted $acc-color-2 0.15em;}
-.dotted-underline-3 {text-decoration: underline dotted $edge-color 0.15em;}
+.dotted-underline-3 {text-decoration: underline dotted var(--edge-color) 0.15em;}
 
 .underline-1 {text-decoration: underline solid $acc-color-1 0.12em;}
 .underline-2 {text-decoration: underline solid $acc-color-2 0.12em;}
@@ -392,7 +499,7 @@ p, ul, ol, blockquote, dl, dt, table, div:has(div > pre > code), figure {
     line-height: $line-height;
     font-family: $special-char-font, $para-font, Arial, sans-serif;
     margin-block: calc($para-spacing/2);
-    color: $para-color;
+    color: var(--para-color);
 }
 
 p + p {
@@ -443,7 +550,7 @@ blockquote {
     margin-left: $quote-offset;
     position: relative;
     p {
-        color: $title-color;
+        color: var(--title-color);
         font-style: italic;
         margin-block: 0;
     }
@@ -467,13 +574,13 @@ table {
     border-collapse: collapse;
     margin-inline: auto;
     font-variant-numeric: tabular-nums lining-nums slashed-zero;
-    background-color: $footnote-card-color;
+    background-color: var(--footnote-card-color);
     font-size: $alt-font-size;
     line-height: $alt-line-height;
     border: 0.15em dotted $acc-color-1;
     thead {
         color: $acc-color-1;
-        background-color: $prim-color;
+        background-color: var(--prim-color);
     }
     td, th {
         padding: 0.4ch 4ch 0.4ch 1ch;
@@ -528,7 +635,7 @@ a:hover {
     margin: 1rem 0;
     li {
         position: relative;
-        background-color: $prim-color;
+        background-color: var(--prim-color);
         border-radius: $card-radius;
         min-height: 10rem;
         overflow: hidden;
@@ -537,7 +644,7 @@ a:hover {
         flex-direction: column;
         gap: 1rem;
         margin: 0;
-        border: 0.2rem dotted $edge-color;
+        border: 0.2rem dotted var(--edge-color);
 
         p {
             font-size: $alt-font-size;
@@ -546,8 +653,8 @@ a:hover {
     }
 
     li:hover {
-        background: $page-color;
-        box-shadow: 0 0 10px -2px $edge-color;
+        background: var(--page-color);
+        box-shadow: 0 0 10px -2px var(--edge-color);
     }
 }
 
@@ -576,10 +683,10 @@ a:hover {
         gap: 2ch;
         #search-input, #ddg-search-box {
             padding-left: 2ch;
-            background-color: $prim-color;
+            background-color: var(--prim-color);
             border-radius: $card-radius;
             font-family: $para-font;
-            color: $title-color;
+            color: var(--title-color);
             font-size: 1rem;
             border: 1px dotted $acc-color-1;
             box-shadow: 1px 1px 1px $acc-color-1;
@@ -679,7 +786,6 @@ a:hover {
 
 ::selection, ::-moz-selection, ::-webkit-selection {
   background-color: $acc-color-1;
-  color: $page-color;
 }
 
 hr {
@@ -687,7 +793,7 @@ hr {
     margin-top: 6rem;
     width: 80%;
     display: block;
-    border-top: 0.2rem dotted $edge-color;
+    border-top: 0.2rem dotted var(--edge-color);
     margin-inline: auto;
 }
 
@@ -710,6 +816,7 @@ footer {
     justify-content: space-between;
     margin-block: 0.15rem;
     gap: 1rem;
+    color: var(--title-color);
     .links {
         display: flex;
         flex-wrap: wrap;
@@ -722,7 +829,7 @@ footer {
         white-space: nowrap;
         .webring {
             display: inline-block;
-            background-color: $prim-color;
+            background-color: var(--prim-color);
             border-radius: $card-radius;
             a:first-child, a:last-child {
                 padding-inline: .5ch;
@@ -775,6 +882,9 @@ footer {
         margin-top: 2.5rem;
         margin-bottom: 2.5rem;
     }
+    img {
+        max-width: calc(100vw - 2*( var(--blog-margin-inline) + var(--content-margin-inline)));
+    }
     figure {
         line-height: 0;
         width: min-content;
@@ -818,21 +928,22 @@ footer {
     overflow-wrap: break-word;
     width: calc((var(--blog-margin-inline) + var(--content-margin-inline))*0.7);
     right: calc((var(--blog-margin-inline) + var(--content-margin-inline))*-.82);
-    background-color: $footnote-card-color;
+    background-color: var(--footnote-card-color);
     li {
         position: relative;
         font-size: 1.15rem;
         font-variant-numeric: lining-nums;
-        color: $title-color;
+        color: var(--title-color);
         margin: 0;
-        border: 2px dotted $edge-color;
+        border: 2px dotted var(--edge-color);
         padding: .9ch .5ch .9ch .75ch;
+        background-color: var(--footnote-card-color);
         &+li {border-top: none;}
         &:has(+li:hover) {border-bottom: none;}
-        &+li:hover {border-top: 2px dotted $edge-color;}
+        &+li:hover {border-top: 2px dotted var(--edge-color);}
         &:hover {
-            background-color: $page-color;
-            box-shadow: 0 0 10px -2px $edge-color;
+            background-color: var(--page-color);
+            box-shadow: 0 0 10px -2px var(--edge-color);
         }
     }
     
@@ -841,10 +952,10 @@ footer {
         border: 2px dotted $acc-color-2;
         color: $acc-color-2;
         font-family: $title-font;
-        background-color: $prim-color;
+        background-color: var(--prim-color);
         padding-inline: 0;
         &:hover {
-            background-color: $prim-color;
+            background-color: var(--prim-color);
             box-shadow: none;
         }
     }
@@ -886,7 +997,7 @@ li[id^="fn:"]:target {
 }
 
 @keyframes footnote-text-flash {
-    from {color: $page-color;}
+    from {color: var(--page-color);}
     to {color: $acc-color-1;}
 }
 
@@ -914,7 +1025,7 @@ blockquote::before {
 .footnote-card {
     position: absolute;
     border-radius: 0.5rem;
-    background: $footnote-card-color;
+    background: var(--footnote-card-color);
     padding: 1ch 1.5ch 1ch 1.5ch;
     z-index: 9999;
     width: fit-content;
@@ -924,7 +1035,7 @@ blockquote::before {
     font-family: $para-font;
     font-size: 0.75rem;
     line-height: $line-height * 0.7;
-    color: $para-color;
+    color: var(--para-color);
     border: 1px dotted $acc-color-2;
     box-shadow: 1px 1px 1px $acc-color-2;
 }
@@ -948,14 +1059,14 @@ blockquote::before {
 }
 
 code {
-    background-color: $prim-color;
+    background-color: var(--prim-color);
     font-family: $code-font, monospace;
     font-feature-settings:  "cv02", "ss01", "ss02", "ss04", "ss08", "zero";
     font-size: $alt-font-size;
 }
 
 pre:has(code) {
-    background-color: $footnote-card-color;
+    background-color: var(--footnote-card-color);
     border: 0.2rem dotted $acc-color-1;
     padding: 2ch;
     code {

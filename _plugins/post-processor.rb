@@ -26,7 +26,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
 
     content_container.traverse do |element|
       if element.text? && !["code", "pre", "abbr", "script", "style"].include?(element.parent.name)
-        new_content = element.content.gsub(/[A-Z]{2,}/) do |match|
+        new_content = element.content.gsub(/[A-Z]{3,}/) do |match|
           "<abbr>#{match}</abbr>"
         end
         element.replace(new_content) if new_content != element.content
