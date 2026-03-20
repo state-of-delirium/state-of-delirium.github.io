@@ -8,9 +8,6 @@ html.setAttribute("data-theme", currentTheme);
 button.addEventListener("click", () => {
   const newTheme = currentTheme === "light" ? "dark" : "light";
 
-  const newText = newTheme === "light" ? "o" : "x";
-  button.innerText = newText;
-
   html.setAttribute("data-theme", newTheme);
   localStorage.setItem("theme", newTheme);
   currentTheme = newTheme;

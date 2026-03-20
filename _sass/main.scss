@@ -22,12 +22,17 @@
     .rss {
         .rss-static {display: block !important;}
         .rss-static-dark {display: none !important;}
+        &:hover {
+            .rss-static {display: none !important;}
+        }
     }
-    .rss:hover {
-        .rss-static {display: none !important;}
-    }
-    ::selection, ::-moz-selection, ::-webkit-selection {
-        color: var(--page-color) !important;
+    .theme-toggle {
+        .light {display: none !important;}
+        .dark {display: block !important;}
+        &:hover {
+            .dark {display: none !important;}
+            .dark-hover {display: block !important;}
+        }
     }
 }
 
@@ -37,7 +42,7 @@
     --edge-color: #6e5d47 !important;
     --footnote-card-color: #363336 !important;
 
-    --title-color: #d1cccc !important;
+    --title-color: #e2d7d7 !important;
     --para-color: #e6ded8 !important;
     
     .dither-bg::before {
@@ -46,12 +51,17 @@
     .rss {
         .rss-static {display: none !important;}
         .rss-static-dark {display: block !important;}
+        &:hover {
+            .rss-static-dark {display: none !important;}
+        }
     }
-    .rss:hover {
-        .rss-static-dark {display: none !important;}
-    }
-    ::selection, ::-moz-selection, ::-webkit-selection {
-        color: inherit !important;
+    .theme-toggle {
+        .light {display: block !important;}
+        .dark {display: none !important;}
+        &:hover {
+            .light {display: none !important;}
+            .light-hover {display: block !important;}
+        }
     }
 }
 
@@ -62,7 +72,7 @@
         --edge-color: #6e5d47;
         --footnote-card-color: #363336;
 
-        --title-color: #d1cccc;
+        --title-color: #e2d7d7;
         --para-color: #e6ded8;
     }
 
@@ -72,13 +82,9 @@
     .rss {
         .rss-static {display: none;}
         .rss-static-dark {display: block;}
-    }
-    .rss:hover {
-        .rss-static-dark {display: none;}
-    }
-
-    ::selection, ::-moz-selection, ::-webkit-selection {
-        color: inherit;
+        &:hover {
+            .rss-static-dark {display: none;}
+        }
     }
 }
 
@@ -99,12 +105,9 @@
     .rss {
         .rss-static {display: block;}
         .rss-static-dark {display: none;}
-    }
-    .rss:hover {
-        .rss-static {display: none;}
-    }
-    ::selection, ::-moz-selection, ::-webkit-selection {
-        color: var(--page-color);
+        &:hover {
+            .rss-static {display: none;}
+        }
     }
 }
 
@@ -290,6 +293,7 @@
 @media only screen and (max-width: 400px) {
     .footer{scale: .95;}
 }
+
 *, *::before, *::after {box-sizing: border-box;}
 
 * {padding: 0; margin: 0; scroll-margin-top: 10rem;}
@@ -387,7 +391,6 @@ details {
     }
 }
 
-
 nav {
     display: flex;
     align-items: center;
@@ -409,20 +412,22 @@ nav {
     .rss {
         img {
             width: 1.3rem;
-            height: auto;
+            height: 1.3rem;
         }
         .rss-hover {display: none;}
     }
     .rss:hover {
         .rss-hover {display: block;}
     }
-    #theme-toggle {
+    .theme-toggle {
         background-color: transparent;
-        color: var(--title-color);
-        font-size: 1.1rem;
-        font-family: $para-font;
-        font-weight: bold;
         border: none;
+        img {
+            width: 1.45rem;
+            height: 1.45rem;
+        }
+        .light-hover {display: none;}
+        .dark-hover {display: none;}
     }
 }
 
@@ -450,7 +455,7 @@ h1 {
     text-align: center;
 }
 h2 {
-    font-size: 1.6rem;  
+    font-size: 1.6rem;
 }
 h3 {
     font-size: 1.3rem;
@@ -468,7 +473,7 @@ h1, h2, h3, h4 {
     text-wrap: balance;
     margin-block: $heading-spacing;
     line-height: 1.5;
-    + p {
+    + p, + blockquote {
         margin-top: calc($para-spacing/4);
     }
 }
@@ -483,7 +488,6 @@ h2 + h2, h3 + h3, h4 + h4, h3 + h2, h4 + h2, h4 + h3 {
 
 .dotted-underline-1 {text-decoration: underline dotted $acc-color-1 0.15em;}
 .dotted-underline-2 {text-decoration: underline dotted $acc-color-2 0.15em;}
-.dotted-underline-3 {text-decoration: underline dotted var(--edge-color) 0.15em;}
 
 .underline-1 {text-decoration: underline solid $acc-color-1 0.12em;}
 .underline-2 {text-decoration: underline solid $acc-color-2 0.12em;}
@@ -545,7 +549,6 @@ ol > li {
     }
 }
 
-
 blockquote {
     margin-left: $quote-offset;
     position: relative;
@@ -553,6 +556,19 @@ blockquote {
         color: var(--title-color);
         font-style: italic;
         margin-block: 0;
+    }
+}
+
+blockquote.note {
+    max-width: 90%;
+    margin-left: calc($quote-offset/2);
+    padding: 2.5ch 1ch 1ch 1ch;
+    border: 2px dotted var(--edge-color);
+    border-radius: $card-radius;
+    P {
+        font-size: $alt-font-size;
+        line-height: $alt-line-height;
+        font-style: normal;
     }
 }
 
@@ -785,7 +801,8 @@ a:hover {
 }
 
 ::selection, ::-moz-selection, ::-webkit-selection {
-  background-color: $acc-color-1;
+    background-color: $acc-color-1;
+    color: var(--page-color);
 }
 
 hr {
@@ -832,7 +849,7 @@ footer {
             background-color: var(--prim-color);
             border-radius: $card-radius;
             a:first-child, a:last-child {
-                padding-inline: .5ch;
+                padding: .25ch .5ch .25ch .5ch;
             }
         }
     }
@@ -917,6 +934,9 @@ footer {
     p:has(+figure.inline-left), p:has(+figure.inline-right) {
         margin-bottom: 0.5rem;
     }
+    h2 {
+        text-decoration: underline dotted $acc-color-2 0.15em;
+    }
 }
 
 .toc {
@@ -960,7 +980,6 @@ footer {
         }
     }
 }
-
 
 .footnote {
     padding: 0 0.15ch 0 0.4ch;
@@ -1013,13 +1032,21 @@ li[id^="fn:"]:target {
     }
 }
 
-blockquote::before {
+blockquote:not(.note)::before {
     content: "";
     position: absolute;
     height: 100%;
     left: -$quote-offset;
     border-left: 0.2em solid $acc-color-1;
     border-radius: $card-radius;
+}
+
+blockquote.note::before {
+    content: "NOTE:";
+    position: absolute;
+    font-size: $alt-font-size;
+    line-height: $alt-line-height;
+    top: 0.5ch;
 }
 
 .footnote-card {
@@ -1034,7 +1061,7 @@ blockquote::before {
 
     font-family: $para-font;
     font-size: 0.75rem;
-    line-height: $line-height * 0.7;
+    line-height: $line-height * 0.8;
     color: var(--para-color);
     border: 1px dotted $acc-color-2;
     box-shadow: 1px 1px 1px $acc-color-2;

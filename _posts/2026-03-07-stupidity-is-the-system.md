@@ -10,7 +10,7 @@ confidence: "med"
 edited: "2026-03-09"
 ---
 
-> This post was a draft that was later completed for an IndieWebClub Bangalore meet
+_This post was a draft that was later completed for an IndieWebClub Bangalore meet_
 
 Never in history has so much information been so easily available, and yet I find myself with the feeling that I know more than I can actually think with. So, despite spending hours every day surrounded by information, I feel less capable of thinking than I used to. This begins to make sense once we look at the environments in which contemporary information appears, because we will start to notice that the platforms that mediate discourse are structured around reaction. 
 
@@ -44,7 +44,8 @@ So, considering this misreading, during an information overload, the content tha
 
 Now that circulation came into the picture, inevitably speed became the dominant value, and a side effect of that is that it brought along hostility to slowness and nuance. Understanding is supposed to be a slow dialogical process, but on the internet, slowness is failure, and dialogue is inefficient. This is a terrible path that we are on; Because a tweet cannot sustain contradiction, a TikTok cannot hold an argument, and a headline cannot express nuance. The very formats through which we now engage with the world are structurally hostile to ambiguity of any kind.
 
-> Note: Ambiguity is the condition of thinking that allows understanding to be possible. Ambiguity forces the brain to move beyond passive reception of information. Because an ambiguous statement can be understood in multiple ways, the listener or reader must actively engage, using context and personal experience to fill in the gaps and determine meaning.
+> Ambiguity is the condition of thinking that allows understanding to be possible. Ambiguity forces the brain to move beyond passive reception of information. Because an ambiguous statement can be understood in multiple ways, the listener or reader must actively engage, using context and personal experience to fill in the gaps and determine meaning.
+{:.note}
 
 The content that circulates most effectively is what can stimulate understanding, where it can gesture towards nuance without requiring it. Over time, this produces a feedback loop where, through surface-level analysis, signals of depth co-opt actual depth itself. This leads to the algorithm and these systems being self-correcting, where it orients itself towards what feels nuanced rather than what is.
 
@@ -75,6 +76,6 @@ I return to that feeling I described at the beginning, where I feel less capable
 
 Maybe it’s not a personal decline that I feel less capable of thinking; maybe it’s the logic of this environment where thinking is no longer required; or maybe it's just how we will progress that it's the natural path that we will take.
 
-<h3 class="accent-1">Stupidity <i class="accent-2">is</i> the system.</h3>
+<h3 class="accent-1" style="text-decoration: none;">Stupidity <i class="accent-2">is</i> the system.</h3>
 
 {% include fleuron.html %}

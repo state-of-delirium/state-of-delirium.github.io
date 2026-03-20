@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22" width="22" height="22">
+ <g className="page" style="">
+  <rect x="0" y="0" width="22" height="22" fill="rgba(255,255,255,0)">
+  </rect>
+  <g className="element" id="ntg0-HYwVc" transform="translate(-1, -1) rotate(0)" opacity="1" style="transform-origin:top left; filter:;">
+   <g>
+    <g>
+     <defs>
+      <clipPath id="clip-ntg0-HYwVc">
+       <rect x="0" y="0" width="24" height="24">
+       </rect>
+      </clipPath>
+     </defs>
+     <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjZTNlM2UzIiBzdHlsZT0iZmlsbDogcmdiKDE2MCwgOTksIDE0NCk7Ij48cGF0aCBkPSJNNTU3LjIzLTQwMi44UTU4OS00MzQuNiA1ODktNDgwLjAzcTAtNDUuNDMtMzEuOC03Ny4yUTUyNS40LTU4OSA0NzkuOTctNTg5cS00NS40MyAwLTc3LjIgMzEuOFEzNzEtNTI1LjQgMzcxLTQ3OS45N3EwIDQ1LjQzIDMxLjggNzcuMlE0MzQuNi0zNzEgNDgwLjAzLTM3MXE0NS40MyAwIDc3LjItMzEuOFpNMzM4LjUtMzM4LjVRMjgwLTM5NyAyODAtNDgwdDU4LjUtMTQxLjVRMzk3LTY4MCA0ODAtNjgwdDE0MS41IDU4LjVRNjgwLTU2MyA2ODAtNDgwdC01OC41IDE0MS41UTU2My0yODAgNDgwLTI4MHQtMTQxLjUtNTguNVptLTEzMy05NmgtMTcxdi05MWgxNzF2OTFabTcyMCAwaC0xNzF2LTkxaDE3MXY5MVptLTQ5MS0zMjB2LTE3MWg5MXYxNzFoLTkxWm0wIDcyMHYtMTcxaDkxdjE3MWgtOTFaTTI1NS43Ni02NDEuODcgMTQ3LjM1LTc0Ni41Mmw2NC40MS02Ny4xMyAxMDQuMTMgMTA3LjE3LTYwLjEzIDY0LjYxWm00OTIuNDggNDk1LjUyTDY0My4xMS0yNTQuNTIgNzA0LTMxNy42NWwxMDguNjUgMTA0LjE3LTY0LjQxIDY3LjEzWk02NDIuMzUtNzA0bDEwNC4xNy0xMDguNjUgNjcuMTMgNjQuNDEtMTA3LjE3IDEwNC4xM0w2NDIuMzUtNzA0Wm0tNDk2IDQ5Mi4yNCAxMDguMTctMTA1LjEzTDMxNy42NS0yNTYgMjEzLjQ4LTE0Ny4zNWwtNjcuMTMtNjQuNDFaTTQ4MC00ODBaIi8+PC9zdmc+" x="0" y="0" width="24" height="24" preserveAspectRatio="none" clip-path="url(#clip-ntg0-HYwVc)">
+     </image>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>
