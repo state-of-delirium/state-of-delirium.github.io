@@ -5,19 +5,19 @@
 $string-color: #318f2a;
 $num-color: #b1345e;
 
-.highlight .c { color: $edge-color; font-style: italic } /* Comment */
+.highlight .c { color: var(--edge-color); font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .highlight .k { color: $acc-color-2} /* Keyword */
 .highlight .o { color: $acc-color-2} /* Operator */
-.highlight .cm { color: $edge-color; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: $edge-color;} /* Comment.Preproc */
-.highlight .c1 { color: $edge-color; font-style: italic } /* Comment.Single */
-.highlight .cs { color: $edge-color; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .cm { color: var(--edge-color); font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: var(--edge-color);} /* Comment.Preproc */
+.highlight .c1 { color: var(--edge-color); font-style: italic } /* Comment.Single */
+.highlight .cs { color: var(--edge-color); font-weight: bold; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
 .highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
 .highlight .ge { font-style: italic } /* Generic.Emph */
 .highlight .gr { color: #aa0000 } /* Generic.Error */
-.highlight .gh { color: $edge-color } /* Generic.Heading */
+.highlight .gh { color: var(--edge-color) } /* Generic.Heading */
 .highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
 .highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
 .highlight .go { color: #888888 } /* Generic.Output */
@@ -59,7 +59,7 @@ $num-color: #b1345e;
 .highlight .sr { color: #009926 } /* Literal.String.Regex */
 .highlight .s1 { color: $string-color } /* Literal.String.Single */
 .highlight .ss { color: #990073 } /* Literal.String.Symbol */
-.highlight .bp { color: $edge-color } /* Name.Builtin.Pseudo */
+.highlight .bp { color: var(--edge-color) } /* Name.Builtin.Pseudo */
 .highlight .vc { color: $acc-color-1 } /* Name.Variable.Class */
 .highlight .vg { color: $acc-color-1 } /* Name.Variable.Global */
 .highlight .vi { color: $acc-color-1 } /* Name.Variable.Instance */

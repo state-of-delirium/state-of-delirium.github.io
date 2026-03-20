@@ -11,11 +11,22 @@
     {% endfor %}
     <a href="/feed.xml" class="rss">
         <img src="{{site.baseurl}}/assets/images/rss.svg" alt="RSS" class="rss-static">
+        <img src="{{site.baseurl}}/assets/images/rss-dark.svg" alt="RSS" class="rss-static-dark">
         <img src="{{site.baseurl}}/assets/images/rss-hover.svg" alt="RSS" class="rss-hover">
     </a>
+    <button type="button" id="theme-toggle" style="display: none;" class="theme-toggle">
+        <img src="{{site.baseurl}}/assets/images/light.svg" alt="Light Mode" class="light">
+        <img src="{{site.baseurl}}/assets/images/dark.svg" alt="Dark Mode" class="dark">
+        <img src="{{site.baseurl}}/assets/images/light-hover.svg" alt="Light Mode" class="light-hover">
+        <img src="{{site.baseurl}}/assets/images/dark-hover.svg" alt="Dark Mode" class="dark-hover">
+    </button>
 </nav>
 
 <script>
     msgElement = document.getElementById("no-js-msg");
     msgElement.remove();
+</script>
+
+<script>
+    {% include theme-toggle.js %}
 </script>

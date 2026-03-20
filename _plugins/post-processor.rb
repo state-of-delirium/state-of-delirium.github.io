@@ -7,7 +7,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   toc_container = doc.at_css(".toc")
   read_time_display = doc.at_css(".reading-time")
 
-  if content_container && toc_container
+  if content_container
     content_container.css("h2:not(.no-id)").each do |heading|
       heading_text = heading.text
       heading_id = Jekyll::Utils.slugify(heading_text)
@@ -23,14 +23,21 @@ Jekyll::Hooks.register :posts, :post_render do |post|
       li.add_child(anchor)
       toc_container.add_child(li)
     end
-  end
 
-  if content_container && read_time_display
+    content_container.traverse do |element|
+      if element.text? && !["code", "pre", "abbr", "script", "style"].include?(element.parent.name)
+        new_content = element.content.gsub(/[A-Z]{3,}/) do |match|
+          "<abbr>#{match}</abbr>"
+        end
+        element.replace(new_content) if new_content != element.content
+      end
+    end
+    
     word_count = content_container.text.split.size
     wpm = 265
     read_time = (word_count.to_f / wpm).round
     read_time_display.content = read_time <= 1 ? "1 min" : "#{read_time} mins"
-  end
 
+  end
   post.output = doc.to_html
 end

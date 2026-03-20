@@ -23,14 +23,14 @@ document.addEventListener("DOMContentLoaded", function() {
         a.href = href;
         div.appendChild(a);
 
-        div.addEventListener("mouseover", function(event) {
+        div.addEventListener("mouseover", () => {
             const div2 = document.querySelector(".footnote-card");
             if (!div2) {
                 document.body.appendChild(div);
             }
         })
 
-        div.addEventListener("mouseout", function(event) {
+        div.addEventListener("mouseout", () => {
             div.remove();
         })
 
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       
     });
-    link.addEventListener("mouseout", function(event) {
+    link.addEventListener("mouseout", () => {
         const footnoteCard = document.querySelector(".footnote-card");
         if (footnoteCard) {
             footnoteCard.remove();
