@@ -290,8 +290,12 @@
         grid-template-columns: 1fr !important;
     }
 }
+@media (hover: none) {
+    blockquote.touch-footnote {display: block !important;}
+}
 @media only screen and (max-width: 400px) {
     .footer{scale: .95;}
+    nav {gap: 1.5rem !important;}
 }
 
 *, *::before, *::after {box-sizing: border-box;}
@@ -559,18 +563,20 @@ blockquote {
     }
 }
 
-blockquote.note {
+blockquote.note, blockquote.touch-footnote {
     max-width: 90%;
     margin-left: calc($quote-offset/2);
-    padding: 2.5ch 1ch 1ch 1ch;
     border: 2px dotted var(--edge-color);
     border-radius: $card-radius;
-    P {
+    p {
         font-size: $alt-font-size;
         line-height: $alt-line-height;
         font-style: normal;
     }
 }
+
+blockquote.note {padding: 2.5ch 1ch 1ch 1ch;}
+blockquote.touch-footnote {padding: 1ch; display: none;}
 
 dl {
     dt {
@@ -1032,7 +1038,7 @@ li[id^="fn:"]:target {
     }
 }
 
-blockquote:not(.note)::before {
+blockquote:not(.note):not(.footnote)::before {
     content: "";
     position: absolute;
     height: 100%;
@@ -1041,13 +1047,14 @@ blockquote:not(.note)::before {
     border-radius: $card-radius;
 }
 
-blockquote.note::before {
-    content: "NOTE:";
+blockquote.note::before, blockquote.touch-footnote::before {
     position: absolute;
     font-size: $alt-font-size;
     line-height: $alt-line-height;
     top: 0.5ch;
 }
+
+blockquote.note::before {content: "NOTE:"}
 
 .footnote-card {
     position: absolute;
@@ -1056,7 +1063,7 @@ blockquote.note::before {
     padding: 1ch 1.5ch 1ch 1.5ch;
     z-index: 9999;
     width: fit-content;
-    max-width: 15%;
+    max-width: max(15rem, 20%);
     text-wrap: pretty;
 
     font-family: $para-font;

@@ -32,6 +32,16 @@ Jekyll::Hooks.register :posts, :post_render do |post|
         element.replace(new_content) if new_content != element.content
       end
     end
+
+    content_container.css(".footnote").each do |fnref|
+      bq = Nokogiri::XML::Node.new("blockquote", doc)
+      p = Nokogiri::XML::Node.new("p", doc)
+      link = fnref["href"].delete_prefix("#")
+      p.content = content_container.at_css("[id='#{link}']").text.sub(/↩$/, "")
+      bq["class"] = "touch-footnote"
+      bq.add_child(p)
+      fnref.parent.parent.after(bq)
+    end
     
     word_count = content_container.text.split.size
     wpm = 265
