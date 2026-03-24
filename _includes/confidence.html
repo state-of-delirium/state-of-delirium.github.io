@@ -2,13 +2,16 @@
     {% if page.confidence == "high" %}
         <p>Lucid</p>
         <img src="{{site.baseurl}}/assets/images/lucid.svg" alt="glass empty">
+        <aside class="tooltip">works you better feel smarter after reading</aside>
     {% endif %}
     {% if page.confidence == "med" %}
         <p>Nebulous</p>
         <img src="{{site.baseurl}}/assets/images/nebulous.svg" alt="glass half">
+        <aside class="tooltip">coherent but hazy and abstract</aside>
     {% endif %}
     {% if page.confidence == "low" %}
         <p>Delirious</p>
         <img src="{{site.baseurl}}/assets/images/delirious.svg" alt="glass full">
+        <aside class="tooltip">barely conscious chaotic ramblings</aside>
     {% endif %}
 </div>
