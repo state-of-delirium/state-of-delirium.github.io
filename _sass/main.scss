@@ -779,6 +779,23 @@ a:hover {
         padding: 1rem;
         max-width: calc(100%/3);
     }
+    .recentPosts-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        > h3 {margin: 0;}
+    }
+    #all-posts {
+        font-size: 1.15rem;
+        height: fit-content;
+        font-family: $title-font;
+        font-style: italic;
+        background-color: var(--prim-color);
+        padding: .4ch .8ch .4ch .8ch;
+        border-radius: 15px;
+        .arrow {font-family: $para-font;}
+        &:hover {outline: 1.5px solid var(--edge-color);}
+    }
 }
 
 .post-wrapper {

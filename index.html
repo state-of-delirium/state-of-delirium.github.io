@@ -23,7 +23,10 @@ description: "Just imagine that this description is reaaaallyy good"
 </section>
 
 <section class="recentPosts">
-    <h3><i><span class="accent-2">Recent Posts</span></i></h3>
+    <div class="recentPosts-header">
+        <h3 class="accent-2"><i>Recent Posts</i></h3>
+        <a href="/blog/" id="all-posts">All Posts <span class="arrow">→</span></a>
+    </div>
     <ul class="grid-list">
         {% for post in site.posts limit: 3 %}
         <li>
@@ -33,6 +36,7 @@ description: "Just imagine that this description is reaaaallyy good"
         </li>
         {% endfor %}
     </ul>
+    
 </section>
 
 <aside class="buttons-wrapper">
