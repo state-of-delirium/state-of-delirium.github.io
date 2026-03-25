@@ -4,7 +4,8 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   doc = Nokogiri::HTML(post.output)
   
   content_container = doc.at_css(".blog-post-content")
-  toc_container = doc.at_css(".toc")
+  toc = doc.at_css(".toc")
+  touch_toc = doc.at_css(".touch-toc")
   read_time_display = doc.at_css(".reading-time")
 
   if content_container
@@ -21,7 +22,8 @@ Jekyll::Hooks.register :posts, :post_render do |post|
       anchor["href"] = "##{heading_id}"
       
       li.add_child(anchor)
-      toc_container.add_child(li)
+      toc.add_child(li.dup)
+      touch_toc.add_child(li)
     end
 
     content_container.traverse do |element|
@@ -35,12 +37,20 @@ Jekyll::Hooks.register :posts, :post_render do |post|
 
     content_container.css(".footnote").each do |fnref|
       bq = Nokogiri::XML::Node.new("blockquote", doc)
+      bq["class"] = "touch-footnote"
+
       p = Nokogiri::XML::Node.new("p", doc)
       link = fnref["href"].delete_prefix("#")
-      p.content = content_container.at_css("[id='#{link}']").text.sub(/↩$/, "")
-      bq["class"] = "touch-footnote"
+      
+      num = "<span class='accent-1'>#{link[-1]}.&nbsp;</span>"
+      content = content_container.at_css("[id='#{link}'] > p").dup
+      content.at_css(".reversefootnote").remove
+      p.inner_html = num + content.inner_html
+
       bq.add_child(p)
-      fnref.parent.parent.after(bq)
+      immediate_child = fnref.ancestors.take_while do |ancestor| 
+        !ancestor.matches?('.blog-post-content') 
+      end.last.after(bq)
     end
     
     word_count = content_container.text.split.size

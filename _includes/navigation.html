@@ -9,7 +9,7 @@
         {{ item.name }}
     </a>
     {% endfor %}
-    <a href="/feed.xml" class="rss">
+    <a href="/rss" class="rss" {% if page.url == "/rss" %}id="rssCurrent"{% endif %}>
         <img src="{{site.baseurl}}/assets/images/rss.svg" alt="RSS" class="rss-static">
         <img src="{{site.baseurl}}/assets/images/rss-dark.svg" alt="RSS" class="rss-static-dark">
         <img src="{{site.baseurl}}/assets/images/rss-hover.svg" alt="RSS" class="rss-hover">

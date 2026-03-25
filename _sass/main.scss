@@ -251,6 +251,8 @@
 }
 @media only screen and (max-width: 1200px) {
     .recentPosts > ul {flex-direction: column; li {max-width: none;}}
+    .toc {display: none !important;}
+    .touch-toc-wrapper {display: block !important;}
 }
 @media only screen and (max-width: 992px) {
     .footer {margin: 1rem 3rem 5% 3rem}
@@ -258,7 +260,6 @@
     nav {padding-inline: 2rem !important;}
     :root {--gradient-width: 8.5%;}
     .marginalia {display: none;}
-    .toc {display: none !important;}
 }
 @media only screen and (max-width: 768px) {
     .image-wrapper {visibility: collapse;}
@@ -290,12 +291,15 @@
         grid-template-columns: 1fr !important;
     }
 }
-@media (hover: none) {
-    blockquote.touch-footnote {display: block !important;}
-}
 @media only screen and (max-width: 400px) {
     .footer{scale: .95;}
     nav {gap: 1.5rem !important;}
+    .blog-post-content h2 {text-align: center;}
+    blockquote.note, blockquote.touch-footnote {max-width: calc(100vw - var(--blog-margin-inline) - var(--content-margin-inline)) !important;}
+}
+@media (hover: none) {
+    blockquote.touch-footnote {display: block !important;}
+    .tooltip {display: none !important;}
 }
 
 *, *::before, *::after {box-sizing: border-box;}
@@ -423,6 +427,11 @@ nav {
     .rss:hover {
         .rss-hover {display: block;}
     }
+    #rssCurrent {
+        .rss-hover {display: block !important;}
+        .rss-static {display: none !important;}
+        .rss-static-dark {display: none !important;}
+    }
     .theme-toggle {
         background-color: transparent;
         border: none;
@@ -477,7 +486,7 @@ h1, h2, h3, h4 {
     text-wrap: balance;
     margin-block: $heading-spacing;
     line-height: 1.5;
-    + p, + blockquote {
+    + p, + blockquote, + ol, + ul {
         margin-top: calc($para-spacing/4);
     }
 }
@@ -510,8 +519,10 @@ p, ul, ol, blockquote, dl, dt, table, div:has(div > pre > code), figure {
     color: var(--para-color);
 }
 
-p + p {
-    margin-top: $para-spacing;
+p {
+    +p {margin-top: $para-spacing;}
+    &:has(+ul), &:has(+ol), &:has(+blockquote) {margin-bottom: 0;}
+    +ul, +ol {margin-top: 0;}
 }
 
 blockquote {
@@ -529,7 +540,7 @@ ul, ol {
         p, h1, h2, h3, h4 {
             margin-block: 0;
         }
-        margin-block: calc($para-spacing/2);
+        +li, >ol, >ul {margin-top: calc($para-spacing/3);}
     }
 }
 
@@ -565,18 +576,24 @@ blockquote {
 
 blockquote.note, blockquote.touch-footnote {
     max-width: 90%;
-    margin-left: calc($quote-offset/2);
-    border: 2px dotted var(--edge-color);
+    margin-inline: auto;
     border-radius: $card-radius;
-    p {
+    > * {
         font-size: $alt-font-size;
         line-height: $alt-line-height;
         font-style: normal;
     }
 }
 
-blockquote.note {padding: 2.5ch 1ch 1ch 1ch;}
-blockquote.touch-footnote {padding: 1ch; display: none;}
+blockquote.note {
+    padding: 2.5ch 1ch 1ch 1ch;
+    border: 2px dotted var(--edge-color);
+}
+blockquote.touch-footnote {
+    display: none;
+    padding: 1ch;
+    margin-block: 0;
+}
 
 dl {
     dt {
@@ -869,10 +886,12 @@ footer {
         white-space: nowrap;
         .webring {
             display: inline-block;
-            background-color: var(--prim-color);
             border-radius: $card-radius;
+            background-color: var(--prim-color);
             a:first-child, a:last-child {
-                padding: .25ch .5ch .25ch .5ch;
+                padding: .25ch .55ch .25ch .55ch;
+                border-radius: 50%;
+                &:hover {outline: 1px solid var(--edge-color);}
             }
         }
     }
@@ -902,6 +921,7 @@ footer {
 
     .confidence {
         display: flex;
+        position: relative;
         height: 2rem;
         justify-content: center;
         align-items: center;
@@ -910,6 +930,7 @@ footer {
             width: 1rem;
             height: auto;
         }
+        &:hover .tooltip {display: block;}
     }
 }
 
@@ -924,6 +945,7 @@ footer {
     }
     img {
         max-width: calc(100vw - 2*( var(--blog-margin-inline) + var(--content-margin-inline)));
+        
     }
     figure {
         line-height: 0;
@@ -962,19 +984,14 @@ footer {
     }
 }
 
-.toc {
+.toc, .touch-toc {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0;
-    position: absolute;
     overflow-wrap: break-word;
-    width: calc((var(--blog-margin-inline) + var(--content-margin-inline))*0.7);
-    right: calc((var(--blog-margin-inline) + var(--content-margin-inline))*-.82);
-    background-color: var(--footnote-card-color);
     li {
         position: relative;
-        font-size: 1.15rem;
+        font-size: $font-size;
         font-variant-numeric: lining-nums;
         color: var(--title-color);
         margin: 0;
@@ -984,24 +1001,40 @@ footer {
         &+li {border-top: none;}
         &:has(+li:hover) {border-bottom: none;}
         &+li:hover {border-top: 2px dotted var(--edge-color);}
-        &:hover {
+        &:hover:not(.touch-toc-heading):not(.toc-heading) {
             background-color: var(--page-color);
             box-shadow: 0 0 10px -2px var(--edge-color);
         }
     }
-    
-    .toc-heading {
-        text-align: center;
-        border: 2px dotted $acc-color-2;
-        color: $acc-color-2;
-        font-family: $title-font;
-        background-color: var(--prim-color);
-        padding-inline: 0;
-        &:hover {
-            background-color: var(--prim-color);
-            box-shadow: none;
-        }
+
+}
+
+.toc .toc-heading, .touch-toc-wrapper .touch-toc-heading {
+    text-align: center;
+    border: 2px dotted $acc-color-2;
+    color: $acc-color-2;
+    font-family: $title-font;
+    background-color: var(--prim-color);
+}
+
+.toc {
+    position: absolute;
+    width: calc((var(--blog-margin-inline) + var(--content-margin-inline))*0.7);
+    right: calc((var(--blog-margin-inline) + var(--content-margin-inline))*-.82);
+    .toc-heading {padding-inline: 0;}
+}
+
+.touch-toc-wrapper {
+    display: none;
+    max-width: 90%;
+    margin-inline: auto;
+    .touch-toc {margin: 0;}
+    .touch-toc-heading {
+        padding: .7ch .5ch .7ch .75ch;
+        font-size: $font-size;
+        &::marker {color: $acc-color-2;}
     }
+    li:first-child {border-top: none;}
 }
 
 .footnote {
@@ -1055,7 +1088,7 @@ li[id^="fn:"]:target {
     }
 }
 
-blockquote:not(.note):not(.footnote)::before {
+blockquote:not(.note):not(.touch-footnote)::before {
     content: "";
     position: absolute;
     height: 100%;
@@ -1084,8 +1117,8 @@ blockquote.note::before {content: "NOTE:"}
     text-wrap: pretty;
 
     font-family: $para-font;
-    font-size: 0.75rem;
-    line-height: $line-height * 0.8;
+    font-size: $tiny-font-size;
+    line-height: $tiny-line-height;
     color: var(--para-color);
     border: 1px dotted $acc-color-2;
     box-shadow: 1px 1px 1px $acc-color-2;
@@ -1126,4 +1159,18 @@ pre:has(code) {
     overflow-x: scroll;
     font-size: $alt-font-size;
     line-height: $alt-line-height;
+}
+
+.tooltip {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    bottom: -50%;
+    left: 0;
+    width: max-content;
+    font-family: $para-font;
+    color: var(--para-color);
+    font-size: $tiny-font-size;
+    line-height: $tiny-line-height;
+    background-color: var(--footnote-card-color);
 }
