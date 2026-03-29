@@ -18,7 +18,7 @@ description: "All State of Delirium blog posts"
     <div class="post-text">
       <h2>{{ post.title }}</h2>
       <p class="post-excerpt">{{ post.excerpt }}</p>
-      <p><i>{{ post.date | date_to_string }}</i></p>
+      <p><i>{{ post.date | date: "%-d %B %Y" }}{% if post.edited %} / {{ post.edited | date: "%-d %B %Y" }}{% endif %}</i></p>
     </div>
     <div class="image-wrapper">
       <img src="{{ post.thumb.src }}" height="{{ post.thumb.height }}" width="{{ post.thumb.width }}" loading="lazy">

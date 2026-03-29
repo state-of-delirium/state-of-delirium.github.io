@@ -5,10 +5,15 @@ layout: none
     {% for post in site.posts %}
     {
         "title" : "{{ post.title | escape }}",
-        "url" : "{{ site.baseurl }}{{ post.url }}",
-        "date" : "{{ post.date | date_to_string }}",
+        {% if post.tags %}
+        {% for tag in post.tags %}
+        "tag-{{ forloop.index }}": "{{ tag }}",
+        {% endfor %}
+        {% endif %}
+        "date" : "{{ post.date | date: "%-d %B %Y" }}{% if post.edited %} / {{ post.edited | date: "%-d %B %Y" }}{% endif %}",
         "author" : "{{ post.author }}",
         "excerpt" : "{{ post.excerpt | strip_html | strip_newlines | escape }}",
+        "url" : "{{ site.baseurl }}{{ post.url }}",
         "thumb_src": "{{ post.thumb.src }}",
         "thumb_height": "{{ post.thumb.height }}",
         "thumb_width": "{{ post.thumb.width }}"
