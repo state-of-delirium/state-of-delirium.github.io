@@ -10,15 +10,10 @@
     </a>
     {% endfor %}
     <a href="/rss" class="rss" {% if page.url == "/rss" %}id="rssCurrent"{% endif %}>
-        <img src="{{site.baseurl}}/assets/images/rss.svg" alt="RSS" class="rss-static">
-        <img src="{{site.baseurl}}/assets/images/rss-dark.svg" alt="RSS" class="rss-static-dark">
-        <img src="{{site.baseurl}}/assets/images/rss-hover.svg" alt="RSS" class="rss-hover">
+        {% include rss-logos.html %}
     </a>
     <button type="button" id="theme-toggle" style="display: none;" class="theme-toggle">
-        <img src="{{site.baseurl}}/assets/images/light.svg" alt="Light Mode" class="light">
-        <img src="{{site.baseurl}}/assets/images/dark.svg" alt="Dark Mode" class="dark">
-        <img src="{{site.baseurl}}/assets/images/light-hover.svg" alt="Light Mode" class="light-hover">
-        <img src="{{site.baseurl}}/assets/images/dark-hover.svg" alt="Dark Mode" class="dark-hover">
+        {% include theme-logos.html %}
     </button>
 </nav>
 

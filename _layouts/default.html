@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="">
+<html lang="en" data-theme="">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,9 +41,9 @@
     <link rel="preload" href="{{site.baseurl}}/assets/fonts/merriweather.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{site.baseurl}}/assets/fonts/worksans.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{site.baseurl}}/assets/fonts/worksans-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{site.baseurl}}/assets/images/state-of-delirium.svg" as="image" type="image/svg+xml" fetchpriority="high">
 
     <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/highlighting.css">
 
     <link rel="icon" type="image/png" href="{{site.baseurl}}/assets/images/favicons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="{{site.baseurl}}/assets/images/favicons/favicon.svg" />
@@ -55,6 +55,10 @@
 
 
   <body>
+    {% if content contains 'class="highlight"' %}
+      <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/highlighting.css">
+    {% endif %}
+
     <div class="dither-bg"></div>
     
     {% include navigation.html %}

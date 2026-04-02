@@ -418,9 +418,9 @@ nav {
         font-weight: bold;
     }
     .rss {
-        img {
-            width: 1.3rem;
-            height: 1.3rem;
+        svg {
+            width: 1.55rem;
+            height: 1.55rem;
         }
         .rss-hover {display: none;}
     }
@@ -435,7 +435,7 @@ nav {
     .theme-toggle {
         background-color: transparent;
         border: none;
-        img {
+        svg {
             width: 1.45rem;
             height: 1.45rem;
         }
