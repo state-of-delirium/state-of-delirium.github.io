@@ -99,5 +99,5 @@ We’re disrupting the legacy long-form vertical with a hyper-scalable thought l
 
 [^1]: I quite like [Maggie Appleton's](https://maggieappleton.com/) definition of this: "A collection of imperfect notes, essays, and ideas growing slowly over time."
 [^2]: In particular, `target="_blank"` and `rel="noreferrer noopener"` for opening the link in a new tab and ensuring privacy and security.
-[^3]: This is implemented by keeping the DDG search visible and the regular search hidden in the CSS. Then using JS to flip the visibility. However, this leads to some flashing when the page is first loaded. If you know how to remedy it, please <a href="mailto:delirium.blog@proton.me">contact me</a>.
+[^3]: This is implemented by keeping the DDG search visible and the regular search hidden in the CSS. Then using JS to flip the visibility. However, this leads to some flashing when the page is first loaded. If you know how to remedy it, please <a href="{{ site.data.email.link }}">contact me</a>.   
 [^4]: Like the vine leaf glyphs 🙟 and 🙝 that are used in the Fleuron
